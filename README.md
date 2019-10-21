@@ -6,7 +6,7 @@ AutoFirma es una herramienta de escritorio con interfaz gráfica que permite la 
 
 
 | Plugin | Versión | Descripción |
-| --- | --- |
+| --- | --- | --- |
 | `InternallyDetachedView` | [**00.01**](https://www.debian.org/)| Visualizar documentos originales almacenados en archivos de firma XML |
 
 ### InternallyDetachedView
@@ -36,7 +36,6 @@ Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en l
 
 ## Créditos
 
-### Version 1:
-- [**Cliente @Firma - Portal Administración Electrónica**](https://administracionelectronica.gob.es/ctt/clienteafirma)
-- [** @Firma - GitHub**](https://github.com/ctt-gob-es/clienteafirma)	
+[**Cliente @Firma - Portal Administración Electrónica**](https://administracionelectronica.gob.es/ctt/clienteafirma)
+[**@Firma - GitHub**](https://github.com/ctt-gob-es/clienteafirma)	
 

@@ -26,6 +26,9 @@ import java.util.ResourceBundle;
 
 /**
  * Clase para la carga de mensajes.
+ *
+ * @author Felipe Muñoz Brieva
+ * 
  */
 public class Messages {
 	private static final String BUNDLE_NAME = "es.gob.afirma.plugin.internallydetachedview.messages"; 

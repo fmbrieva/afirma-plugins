@@ -28,6 +28,8 @@ import java.util.ResourceBundle;
 
 /**
  * Clase para la carga de propiedades
+ * 
+ * @author Felipe Muñoz Brieva
  */
 public class Propiedades {
 

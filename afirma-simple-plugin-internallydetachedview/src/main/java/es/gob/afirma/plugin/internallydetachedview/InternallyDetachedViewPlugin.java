@@ -29,6 +29,8 @@ import es.gob.afirma.plugin.internallydetachedview.Propiedades;
 /**
  * Instalación del plugin con todas las etiquetas definidas en Propiedades
  * 
+ * @author Felipe Muñoz Brieva
+ * 
  */
 public class InternallyDetachedViewPlugin extends AfirmaPlugin {
 

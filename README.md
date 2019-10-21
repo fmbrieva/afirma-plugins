@@ -36,10 +36,8 @@ Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en l
 
 
 
-
-
 ## Créditos
 
 - [**Cliente @Firma - Portal Administración Electrónica**](https://administracionelectronica.gob.es/ctt/clienteafirma)
-- [**@Firma - GitHub**](https://github.com/ctt-gob-es/clienteafirma)	
+- [**Cliente @Firma - GitHub**](https://github.com/ctt-gob-es/clienteafirma)	
 

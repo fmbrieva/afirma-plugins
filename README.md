@@ -9,7 +9,7 @@ AutoFirma es una herramienta de escritorio con interfaz gráfica que permite la 
 | --- | --- | --- |
 | `InternallyDetachedView` | [**00.01**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedView/00.01/afirma-ui-simpleafirma-plugin-internallydetachedview-1.6.5.jar)| Visualizar documentos originales almacenados en archivos de firma XML |
 
-### InternallyDetachedView
+### 1. Plugin InternallyDetachedView
 
 [**Manual InternallyDetachedView**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedView/00.01/Plugin_InternallyDetachedView_v00r01.pdf)
 

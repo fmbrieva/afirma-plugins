@@ -1,0 +1,23 @@
+{
+	"info": {
+		"name": "internally_detached_view",
+		"title": "Ver original almacenado en archivos de firma XML",
+		"version_code": 1,
+		"version": "00.01",
+		"authors": [
+			"Felipe Muñoz Brieva"
+		],
+		"description": "Plugin para visualizar el documento original almacenado internamente en archivos de firma XML (Internally Detached)",
+		"configuration_panel": "es.gob.afirma.plugin.internallydetachedview.InternallyDetachedViewConfiguracionPanel"
+	},
+	"buttons": [ 
+		{
+			"title": "Ver original almacenado en archivo de firma XML",
+			"icon": "es/gob/afirma/plugin/internallydetachedview/certificate_16.png",
+			"tooltip": "Ver original almacenado en archivo de firma",
+			"accesible_description": "Ver original almacenado en archivo de firma",
+			"window": "visor",
+			"action": "es.gob.afirma.plugin.internallydetachedview.InternallyDetachedViewAction"
+		}
+	]
+}

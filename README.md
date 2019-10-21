@@ -11,6 +11,7 @@ AutoFirma es una herramienta de escritorio con interfaz gráfica que permite la 
 
 ### InternallyDetachedView
 
+[**Manual InternallyDetachedView**](https://github.com/ctt-gob-es/clienteafirma)	https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedView/00.01/Plugin_InternallyDetachedView_v00r01.pdf)
 Una de las funcionalidades de AutoFirma es la verificación de documentos firmados electrónicamente permitiendo visualizar la firma y el contenido del documento firmado, pero existe una modalidad de firma  ‘Internally detached’ que genera en un único fichero XML el documento original y las firmas
 
 ```

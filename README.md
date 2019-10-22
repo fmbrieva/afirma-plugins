@@ -33,7 +33,7 @@ Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en l
 
 ![](imagenes/InternallyDetachedView_Boton.png)
 
-<img src="imagenes/InternallyDetachedView_Boton.png" width="50" height="50">
+<img src="imagenes/InternallyDetachedView_Boton.png" width="50">
 
 ## Instalación de plugins
 

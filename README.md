@@ -42,7 +42,7 @@ Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en l
 Para añadir un plugin en AutoFirma debe acceder al módulo `Herramientas&Gestionar plugins`
 
 <p align="center">
-    <img src="imagenes/AutoFirma_Herramientas_Plugins.png" alt="Plugin" width="60%" />
+    <img src="imagenes/AutoFirma_Herramientas_Plugins.png" alt="Plugin" width="30%" />
 </p>
 
 y con desde el botón `Agregar` debe seleccionar el archivo JAR 

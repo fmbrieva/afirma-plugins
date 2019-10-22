@@ -1,6 +1,6 @@
 # afirma-plugins
 
-AutoFirma es una herramienta de escritorio con interfaz gráfica que permite la ejecución de operaciones de firma de ficheros locales en entornos de escritorio (Windows, Linux y OS X ) y mediante un sistema de plugins permite añadir nuevas funcionalidades.
+AutoFirma es una herramienta de escritorio con interfaz gráfica que permite la ejecución de operaciones de firma de ficheros locales en entornos de escritorio (Windows, Linux y OS X ) y `mediante un sistema de plugins permite añadir nuevas funcionalidades`.
 
 ## Plugins para AutoFirma
 

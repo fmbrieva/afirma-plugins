@@ -33,9 +33,7 @@ Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en l
 
 ![](imagenes/InternallyDetachedView_Boton.png)
 
-![](imagenes/InternallyDetachedView_Boton.png | width=50%)
-
-![test image size](imagenes/InternallyDetachedView_Boton.png){:height="50%" width="50%"}
+![](imagenes/InternallyDetachedView_Boton.png) <!-- .element height="50%" width="50%" -->
 
 ## Instalación de plugins
 

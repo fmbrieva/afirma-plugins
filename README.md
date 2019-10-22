@@ -10,7 +10,7 @@ AutoFirma es una herramienta de escritorio con interfaz gráfica que permite la 
 
 ### 1. Plugin InternallyDetachedView
 
-`Plugin que permite visualizar el documento almacenado internamente en un archivo de firma XML`
+`Plugin que permite visualizar el documento original firmado almacenado internamente en un archivo de firma XML`
 
 Existe una modalidad de firma `Internally detached` en la cual se almacena en un único fichero XML el documento original y las firmas
 
@@ -27,9 +27,9 @@ Existe una modalidad de firma `Internally detached` en la cual se almacena en un
   </documento>
 ```
 
-y el `Visor de Firmas` de `AutoFirma` no dispone de herramientas para visualizar el contenido del documento almacenado en el archivo XML.
+y el `Visor de Firmas` de `AutoFirma` no dispone de herramientas para visualizar el documento original.
 
-Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en la pantalla del `Visor de Firmas` para visualizar el documento firmado almacenado en el archivo de firma XML. 
+Mediante el plugin `InternallyDetachedView` se añade una nueva funcionalidad en la pantalla del `Visor de Firmas` para visualizar el documento original firmado almacenado en el archivo de firma XML. 
 
 <p align="center">
     <img src="imagenes/InternallyDetachedView_Boton.png" alt="Plugin" width="60%" />

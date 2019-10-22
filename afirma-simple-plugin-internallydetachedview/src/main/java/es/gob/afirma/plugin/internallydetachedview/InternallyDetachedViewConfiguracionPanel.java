@@ -97,7 +97,10 @@ public class InternallyDetachedViewConfiguracionPanel extends ConfigurationPanel
 							.getResourceAsStream(Propiedades.getString(Propiedades.PROP_RUTA_RECURSOS)
 									+ Propiedades.getString(Propiedades.PROP_FICHERO_AYUDA));
 
-					File tempFile = File.createTempFile(Propiedades.getString(Propiedades.PROP_FICHERO_AYUDA),"");
+					File tempFile = File.createTempFile(Propiedades.getString(Propiedades.PROP_PREFIJO_MANUAL),
+							Propiedades.getString(Propiedades.PROP_SEPARADOR_EXTENSION)
+									+ Propiedades.getString(Propiedades.PROP_EXTENSION_PDF));
+
 					FileOutputStream fos = new FileOutputStream(tempFile);
 					while (inputStream.available() > 0) {
 						fos.write(inputStream.read());

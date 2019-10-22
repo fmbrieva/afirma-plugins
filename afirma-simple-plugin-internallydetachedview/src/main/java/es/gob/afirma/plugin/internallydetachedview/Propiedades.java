@@ -46,6 +46,7 @@ public class Propiedades {
 
 	// Propiedades
 	public static final String PROP_PREFIJO_ORIGINAL = "prefijoOriginal";
+	public static final String PROP_PREFIJO_MANUAL = "prefijoManual";
 	public static final String PROP_EXTENSION_PDF = "extensionPdf";
 	public static final String PROP_EXTENSION_TXT = "extensionTxt";
 	public static final String PROP_MIMETYPE_PDF = "mimeTypePdf";
@@ -56,6 +57,7 @@ public class Propiedades {
 	public static final String PROP_FICHERO_AYUDA = "ficheroAyuda";
 	public static final String PROP_SEPARADOR_LISTA_ETIQUETAS = "separadorListaEtiquetas";
 	public static final String PROP_SEPARADOR_ETIQUETA = "separadorEtiqueta";
+	public static final String PROP_SEPARADOR_EXTENSION = "separadorExtension";
 	public static final String PROP_CONFIG_ETIQUETAS = "configEtiquetas";
 	
 	// Etiquetas a documentos originales 

@@ -136,7 +136,7 @@ public class InternallyDetachedViewAction extends SignatureProcessAction {
 
 			// Crear fichero temporal para visualizar contenido
 			File tempFile = File.createTempFile(Propiedades.getString(Propiedades.PROP_PREFIJO_ORIGINAL),
-					extensionMimeType);
+					Propiedades.getString(Propiedades.PROP_SEPARADOR_EXTENSION) + extensionMimeType);
 
 			OutputStream opStream = null;
 			opStream = new FileOutputStream(tempFile);
@@ -171,7 +171,8 @@ public class InternallyDetachedViewAction extends SignatureProcessAction {
 						listaEtiquetasOriginal.remove(0);
 						return getOriginalEmbebido(listaEtiquetasOriginal, nodoHijo);
 					} else {
-						// Consultar si existe el atributo MimeType para asignar la extensión correcta del fichero
+						// Consultar si existe el atributo MimeType para asignar la extensión correcta
+						// del fichero
 						String atributoMimeType = "";
 						atributoMimeType = nodoHijo
 								.getAttribute(Propiedades.getString(Propiedades.PROP_ATTRIBUTE_MIMETYPE));

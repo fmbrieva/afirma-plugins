@@ -2,18 +2,6 @@
 
 AutoFirma es una herramienta de escritorio con interfaz gráfica que permite la ejecución de operaciones de firma de ficheros locales en entornos de escritorio (Windows, Linux y OS X ) y mediante un sistema de plugins permite añadir nuevas funcionalidades.
 
-## Instalación de plugins
-
-`Los plugins están empaquetados en un único JAR con todas las clases y recursos`
-
-Para añadir un plugin en AutoFirma debe acceder al módulo `Herramientas&Gestionar plugins`
-
-![](imagenes/AutoFirma_Agregar_Plugins.png)
-
-y con desde el botón `Agregar` debe seleccionar el archivo JAR 
-
-![](imagenes/AutoFirma_Herramientas_Plugins.png)
-
 ## Plugins disponibles
 
 | Plugin | Versión  | Descripción |
@@ -43,6 +31,19 @@ Una de las funcionalidades de AutoFirma es la verificación de documentos firmad
 y el `Visor de Firmas` de `AutoFirma` no dispone de herramientas para visualizar el contenido del documento firmado almacenado en el archivo XML.
 
 Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en la pantalla del Visor de Firmas para visualizar el documento firmado almacenado en el archivo de firma XML. 
+
+## Instalación de plugins
+
+`Los plugins están empaquetados en un único JAR con todas las clases y recursos`
+
+Para añadir un plugin en AutoFirma debe acceder al módulo `Herramientas&Gestionar plugins`
+
+
+![](imagenes/AutoFirma_Herramientas_Plugins.png)
+
+y con desde el botón `Agregar` debe seleccionar el archivo JAR 
+
+![](imagenes/AutoFirma_Agregar_Plugins.png)
 
 ## Créditos
 

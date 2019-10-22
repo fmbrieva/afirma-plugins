@@ -33,6 +33,8 @@ Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en l
 
 ![](imagenes/InternallyDetachedView_Boton.png)
 
+![Plugin](imagenes/InternallyDetachedView_Boton.png){ width=50% }
+
 <img src="imagenes/InternallyDetachedView_Boton.png" alt="Kitten"
 	title="A cute kitten" width="150" height="100" />
 

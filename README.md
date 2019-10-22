@@ -35,8 +35,6 @@ Mediante el plugin `InternallyDetachedView` se añade una nueva funcionalidad en
     <img src="imagenes/InternallyDetachedView_Boton.png" alt="Plugin" width="60%" />
 </p>
 
-Para añadir nuevas cadenas de etiquetas puede utilizar la pantalla de configuración del plugin o enviar un archivo firmado XML de ejemplo a la dirección de correo digitaliza.aapp@gmail.com para analizarlo e incluirlo en la siguiente distribución del plugin.
-
 ## Instalación de plugins
 
 `Los plugins están empaquetados en un único JAR`

@@ -31,7 +31,7 @@ y el `Visor de Firmas` de `AutoFirma` no dispone de herramientas para visualizar
 
 Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en la pantalla del `Visor de Firmas` para visualizar el documento firmado almacenado en el archivo de firma XML. 
 
-![](imagenes/InternallyDetachedView_Boton.png | width=50)
+![](imagenes/InternallyDetachedView_Boton.png)
 
 ## Instalación de plugins
 

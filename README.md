@@ -31,7 +31,7 @@ y el `Visor de Firmas` de `AutoFirma` no dispone de herramientas para visualizar
 
 Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en la pantalla del `Visor de Firmas` para visualizar el documento firmado almacenado en el archivo de firma XML. 
 
-![](imagenes/InternallyDetachedView_Boton.png)
+![](imagenes/InternallyDetachedView_Boton.png | width=50)
 
 ## Instalación de plugins
 
@@ -40,11 +40,11 @@ Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en l
 Para añadir un plugin en AutoFirma debe acceder al módulo `Herramientas&Gestionar plugins`
 
 
-![](imagenes/AutoFirma_Herramientas_Plugins.png)
+![](imagenes/AutoFirma_Herramientas_Plugins.png| width=50)
 
 y con desde el botón `Agregar` debe seleccionar el archivo JAR 
 
-![](imagenes/AutoFirma_Agregar_Plugins.png)
+![](imagenes/AutoFirma_Agregar_Plugins.png| width=50)
 
 ## Créditos
 

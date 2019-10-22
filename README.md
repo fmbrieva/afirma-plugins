@@ -55,7 +55,7 @@ y con desde el botón `Agregar` debe seleccionar el archivo JAR
 
 ## Contacto
 
-- digitaliza.aapp@gmail.com 
+Para hacer sugerencias ó reportar incidencias puede enviar un correo electrónico a digitaliza.aapp@gmail.com 
 
 ## Créditos
 

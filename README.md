@@ -34,7 +34,7 @@ Mediante el plugin InternallyDetachedView se añade una nueva funcionalidad en l
 
 ## Instalación de plugins
 
-`Los plugins están empaquetados en un único JAR con todas las clases y recursos`
+`Los plugins están empaquetados en un único JAR`
 
 Para añadir un plugin en AutoFirma debe acceder al módulo `Herramientas&Gestionar plugins`
 

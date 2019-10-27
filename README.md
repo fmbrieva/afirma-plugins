@@ -7,7 +7,7 @@ AutoFirma es una herramienta de escritorio con interfaz gráfica que permite la 
 | Plugin | Versión  | Descripción |
 | --- | --- | --- |
 | [**`InternallyDetachedView`**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedView/00.02/Plugin_InternallyDetachedView_v00r02.pdf?raw=yes)| [**00.02**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedView/00.02/afirma-ui-simpleafirma-plugin-internallydetachedview-1.6.5_v00r02.jar?raw=yes)| Visualizar documentos originales almacenados en archivos de firma XML |
-| [**`InternallyDetachedFolder`**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedFolder/00.01/Plugin_InternallyDetachedFolder_v00r01.pdf?raw=yes)| [**00.01**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedFolder/00.01/afirma-ui-simpleafirma-plugin-internallydetachedfolder-1.6.5_v00r01.jar?raw=yes)| Visualizar documentos originales almacenados en archivos de firma XML |
+| [**`InternallyDetachedFolder`**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedFolder/00.01/Plugin_InternallyDetachedFolder_v00r01.pdf?raw=yes)| [**00.01**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedFolder/00.01/afirma-ui-simpleafirma-plugin-internallydetachedfolder-1.6.5_v00r01.jar?raw=yes)| Extraer documentos originales almacenados en archivos de firma XML |
 
 ### 1. Plugin InternallyDetachedView
 
@@ -34,6 +34,16 @@ Mediante el plugin `InternallyDetachedView` se añade una nueva funcionalidad en
 
 <p align="center">
     <img src="imagenes/InternallyDetachedView_Boton.png" alt="Plugin" width="60%" />
+</p>
+
+### 2. Plugin InternallyDetachedFolder
+
+`Plugin que permite extraer documentos originales firmados almacenados internamente en archivos de firma XML`
+
+Mediante el plugin `InternallyDetachedFolder` se añade una nueva funcionalidad en la pantalla inicial de `Autofirma` para extraer documentos almacenados en archivos de firma XML. 
+
+<p align="center">
+    <img src="imagenes/InternallyDetachedFolder_Boton.png" alt="Plugin" width="60%" />
 </p>
 
 ## Instalación de plugins

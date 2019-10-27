@@ -57,6 +57,7 @@ Para extraer los documentos almacenados en archivos de firma debe seleccionarse
 <p align="center">
     <img src="imagenes/InternallyDetachedFolder_Options.png" alt="Plugin" width="60%" />
 </p>
+
 ## Instalación de plugins
 
 `Los plugins están empaquetados en un único JAR`

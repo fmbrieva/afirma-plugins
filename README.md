@@ -62,6 +62,19 @@ y con desde el botón `Agregar` debe seleccionar el archivo JAR
     <img src="imagenes/AutoFirma_Agregar_Plugins.png" alt="Plugin" width="60%" />
 </p>
 
+Para extraer los documentos almacenados en archivos de firma debe seleccionarse
+
+- Directorio con los archivos de firma XML
+- Directorio para grabar los documentos extraidos (formato pdf, txt)
+- Recursivo (Buscar archivos de firma en subdirectorios)
+- Almacenar los documentos extraidos en el mismo directorio que se encuentran los archivos de firma
+
+
+<p align="center">
+    <img src="imagenes/InternallyDetachedView_Options.png" alt="Plugin" width="60%" />
+</p>
+
+
 ## Contacto
 
 Para hacer sugerencias ó reportar incidencias puede enviar un correo electrónico a digitaliza.aapp@gmail.com 

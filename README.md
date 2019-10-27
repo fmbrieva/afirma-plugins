@@ -46,6 +46,17 @@ Mediante el plugin `InternallyDetachedFolder` se añade una nueva funcionalidad 
     <img src="imagenes/InternallyDetachedFolder_Boton.png" alt="Plugin" width="60%" />
 </p>
 
+Para extraer los documentos almacenados en archivos de firma debe seleccionarse
+
+- Directorio con los archivos de firma XML
+- Directorio para grabar los documentos extraidos (formato pdf, txt)
+- Recursivo (Buscar archivos de firma en subdirectorios)
+- Almacenar los documentos extraidos en el mismo directorio que se encuentran los archivos de firma
+
+
+<p align="center">
+    <img src="imagenes/InternallyDetachedFolder_Options.png" alt="Plugin" width="60%" />
+</p>
 ## Instalación de plugins
 
 `Los plugins están empaquetados en un único JAR`
@@ -60,18 +71,6 @@ y con desde el botón `Agregar` debe seleccionar el archivo JAR
 
 <p align="center">
     <img src="imagenes/AutoFirma_Agregar_Plugins.png" alt="Plugin" width="60%" />
-</p>
-
-Para extraer los documentos almacenados en archivos de firma debe seleccionarse
-
-- Directorio con los archivos de firma XML
-- Directorio para grabar los documentos extraidos (formato pdf, txt)
-- Recursivo (Buscar archivos de firma en subdirectorios)
-- Almacenar los documentos extraidos en el mismo directorio que se encuentran los archivos de firma
-
-
-<p align="center">
-    <img src="imagenes/InternallyDetachedFolder_Options.png" alt="Plugin" width="60%" />
 </p>
 
 

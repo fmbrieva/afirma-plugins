@@ -1,0 +1,23 @@
+{
+	"info": {
+		"name": "internally_detached_folder",
+		"title": "InternallyDetachedFolder",
+		"version_code": 1,
+		"version": "00.01",
+		"authors": [
+			"Felipe Muñoz Brieva"
+		],
+		"description": "Plugin para extraer los documentos almacenados en los archivos de firma XML (Internally Detached) de una carpeta ",
+		"configuration_panel": "es.gob.afirma.plugin.internallydetachedfolder.InternallyDetachedFolderConfiguracionPanel"
+	},
+	"buttons": [ 
+		{
+			"title": "Extraer documentos de archivos XML",
+			"icon": "es/gob/afirma/plugin/internallydetachedfolder/certificate_16.png",
+			"tooltip": "Extraer los documentos almacenados en los archivos de firma XML de una carpeta",
+			"accesible_description": "Extraer los documentos almacenados en los archivos de firma XML de una carpeta",
+			"window": "input",
+			"action": "es.gob.afirma.plugin.internallydetachedfolder.InternallyDetachedFolderAction"
+		}
+	]
+}

@@ -71,7 +71,7 @@ Para extraer los documentos almacenados en archivos de firma debe seleccionarse
 
 
 <p align="center">
-    <img src="imagenes/InternallyDetachedView_Options.png" alt="Plugin" width="60%" />
+    <img src="imagenes/InternallyDetachedFolder_Options.png" alt="Plugin" width="60%" />
 </p>
 
 

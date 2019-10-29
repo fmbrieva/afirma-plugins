@@ -8,7 +8,7 @@
 	<artifactId>afirma-ui-simpleafirma-plugin-internallydetachedview</artifactId>
 	<packaging>jar</packaging>
 	<groupId>es.gob.afirma</groupId>
-	<version>v00.r02</version>
+	<version>v00r02</version>
 	<name>afirma-ui-simpleafirma-plugin-internallydetachedview</name>
 	<description>Plugin para la visualización del documento original almacenado en el archivo de firma</description>
 

@@ -7,7 +7,7 @@
 	<artifactId>afirma-ui-simpleafirma-plugin-internallydetachedfolder</artifactId>
 	<packaging>jar</packaging>
 	<groupId>es.gob.afirma</groupId>
-	<version>v00.r01</version>
+	<version>v00r01</version>
 	<name>afirma-ui-simpleafirma-plugin-internallydetachedfolder</name>
 	<description>Plugin para extraer los documentos almacenados en los archivos de firma XML de una carpeta</description>
 

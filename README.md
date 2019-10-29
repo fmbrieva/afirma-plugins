@@ -13,7 +13,7 @@ AutoFirma es una herramienta de escritorio con interfaz gráfica que permite la 
 
 `Plugin que permite visualizar el documento almacenado internamente en un archivo de firma XML`
 
-Existe una modalidad de firma `Internally detached` en la cual se almacena en un único fichero XML el documento original y las firmas
+Existe una modalidad de firma `Internally detached` en la cual se almacena en un único fichero XML el documento original y las firmas:
 
 ```
   <documento>

@@ -71,7 +71,7 @@ Para añadir un plugin en AutoFirma debe acceder al módulo `Herramientas&Gestio
 y con desde el botón `Agregar` debe seleccionar el archivo JAR 
 
 <p align="center">
-    <img src="imagenes/AutoFirma_Agregar_Plugins.png" alt="Plugin" width="60%" />
+    <img src="imagenes/AutoFirma_Agregar_Pluginsv00r01.png" alt="Plugin" width="60%" />
 </p>
 
 

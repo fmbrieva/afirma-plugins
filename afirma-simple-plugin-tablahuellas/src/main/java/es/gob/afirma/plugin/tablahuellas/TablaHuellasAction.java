@@ -26,6 +26,8 @@ import java.awt.Container;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Image;
@@ -44,13 +46,14 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.logging.Logger;
 
 import javax.swing.BorderFactory;
-import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -72,7 +75,6 @@ import es.gob.afirma.core.AOCancelledOperationException;
 import es.gob.afirma.core.misc.AOUtil;
 import es.gob.afirma.core.misc.Base64;
 import es.gob.afirma.core.ui.AOUIFactory;
-import es.gob.afirma.standalone.SimpleAfirma;
 import es.gob.afirma.standalone.plugins.DataProcessAction;
 import es.gob.afirma.standalone.plugins.InputData;
 
@@ -114,9 +116,13 @@ public class TablaHuellasAction extends DataProcessAction {
 	// *
 	private final JLabel etiquetaAlgoritmo = new JLabel(Messages.getString("FolderActionTexto.21"));
 	private final JLabel etiquetaFormato = new JLabel(Messages.getString("FolderActionTexto.22"));
-
+	private final JLabel etiquetaFuente = new JLabel(Messages.getString("FolderActionTexto.23"));
+	private final JLabel etiquetaPresentacion = new JLabel(Messages.getString("FolderActionTexto.10"));
+	
 	private final JComboBox comboAlgoritmo = new JComboBox(Propiedades.HUELLA_ALGORITMOS);
 	private final JComboBox comboFormato = new JComboBox(Propiedades.HUELLA_FORMATOS);
+	private final JComboBox comboFuente = new JComboBox();
+
 	// *
 	private final JRadioButton rbtnTabla = new JRadioButton(Messages.getString("FolderActionTexto.15"), true);
 	private final JRadioButton rbtnTexto = new JRadioButton(Messages.getString("FolderActionTexto.16"), false);
@@ -124,7 +130,8 @@ public class TablaHuellasAction extends DataProcessAction {
 
 	// private JButton botonPortapapeles = new
 	// JButton(Messages.getString("FolderActionTexto.0"));
-	private ImageIcon icon = new ImageIcon(getClass().getResource("/es/gob/afirma/plugin/tablahuellas/TablaHuellas.png"));
+	private ImageIcon icon = new ImageIcon(
+			getClass().getResource("/es/gob/afirma/plugin/tablahuellas/TablaHuellas.png"));
 	private JButton botonPortapapeles = new JButton(Messages.getString("FolderActionTexto.0"));
 
 	// private JButton botonPortapapeles = new
@@ -135,6 +142,8 @@ public class TablaHuellasAction extends DataProcessAction {
 
 	// *
 	private JButton botonSalir = new JButton(Messages.getString("FolderActionTexto.1"));
+
+	private String defaultFont = "";
 
 	// *
 	boolean extraerDocumentos = false;
@@ -165,6 +174,28 @@ public class TablaHuellasAction extends DataProcessAction {
 	}
 
 	private void createUI() {
+
+		// Obtener default font
+		Font font = new JLabel().getFont();
+		defaultFont = font.getFamily();
+
+		GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		Font[] allFonts = graphicsEnvironment.getAllFonts();
+
+		Set<String> set = new TreeSet<>();
+
+		// use for loop to pull the elements of array to hashmap's key
+		for (int j = 0; j < allFonts.length; j++) {
+			set.add(allFonts[j].getFamily());
+		}
+
+		// print the set
+		Iterator<String> iterator = set.iterator();
+		while (iterator.hasNext()) {
+			comboFuente.addItem(iterator.next().toString());
+		}
+
+		comboFuente.setSelectedItem(defaultFont);
 
 		documentosLista.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		documentosLista.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
@@ -249,7 +280,7 @@ public class TablaHuellasAction extends DataProcessAction {
 		comboAlgoritmo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, comboAlgoritmo.getSelectedItem().toString());
+				//JOptionPane.showMessageDialog(null, comboAlgoritmo.getSelectedItem().toString());
 			}
 		});
 
@@ -258,25 +289,25 @@ public class TablaHuellasAction extends DataProcessAction {
 		comboFormato.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				JOptionPane.showMessageDialog(null, comboFormato.getSelectedItem().toString());
+				//JOptionPane.showMessageDialog(null, comboFormato.getSelectedItem().toString());
 			}
 		});
-		
+
 		// Boton Copiar huellas digitales al portapapeles
 		botonPortapapeles.setEnabled(true);
 
 		botonPortapapeles.setPreferredSize(new Dimension(350, 50));
-		
-		botonPortapapeles.setBackground(new Color(209,209,209));
-		
-        int width = (int) Math.round(icon.getIconWidth() / 1.8);
-        int height = (int) Math.round(icon.getIconHeight() / 1.8);
 
-        Image img = icon.getImage();  
-        Image resizedIcon = img.getScaledInstance(width, height,  java.awt.Image.SCALE_SMOOTH); 
+		botonPortapapeles.setBackground(new Color(209, 209, 209));
 
-        botonPortapapeles.setIcon(new ImageIcon(resizedIcon));
-        
+		int width = (int) Math.round(icon.getIconWidth() / 1.8);
+		int height = (int) Math.round(icon.getIconHeight() / 1.8);
+
+		Image img = icon.getImage();
+		Image resizedIcon = img.getScaledInstance(width, height, java.awt.Image.SCALE_SMOOTH);
+
+		botonPortapapeles.setIcon(new ImageIcon(resizedIcon));
+
 		botonPortapapeles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dialogoEntrada.dispose();
@@ -292,7 +323,7 @@ public class TablaHuellasAction extends DataProcessAction {
 		// Boton Salir
 		botonSalir.setEnabled(true);
 		botonSalir.setPreferredSize(new Dimension(80, 50));
-		
+
 		botonSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				documentosModelo.removeAllElements();
@@ -383,7 +414,7 @@ public class TablaHuellasAction extends DataProcessAction {
 
 		panelFormatoHuella.add(etiquetaAlgoritmo);
 		panelFormatoHuella.add(comboAlgoritmo);
-		// panelFormatoHuella.add(Box.createRigidArea(new Dimension(0, 120)));
+
 		panelFormatoHuella.add(etiquetaFormato);
 		panelFormatoHuella.add(comboFormato);
 
@@ -394,8 +425,12 @@ public class TablaHuellasAction extends DataProcessAction {
 		panelCopiar.setBorder(borderCopiar);
 		panelCopiar.setLayout(new FlowLayout(FlowLayout.CENTER));
 
+		panelCopiar.add(etiquetaFuente);
+		panelCopiar.add(comboFuente);
+		panelCopiar.add(etiquetaPresentacion);
 		panelCopiar.add(rbtnTabla);
 		panelCopiar.add(rbtnTexto);
+
 		panelSalir.add(botonPortapapeles);
 		panelSalir.add(botonSalir);
 
@@ -443,11 +478,13 @@ public class TablaHuellasAction extends DataProcessAction {
 		try {
 
 			String rtfText = Propiedades.getString(Propiedades.PROP_RTF_HEADER)
+					.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_RTF_DEFAULT_FONT), defaultFont)
 					+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_TITULO)
 							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TITULO_CONTENIDO),
 									"Ficheros adjuntos")
 							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TITULO_HUELLA_FORMATO),
 									"Formato huella: SHA-512 - Hexadecimal");
+
 			for (int i = 0; i < size; i++) {
 
 				FileInputStream inputStream = new FileInputStream(
@@ -460,9 +497,6 @@ public class TablaHuellasAction extends DataProcessAction {
 				byte[] data = AOUtil.getDataFromInputStream(inputStream);
 				byte[] hash = MessageDigest.getInstance(comboAlgoritmo.getSelectedItem().toString()).digest(data);
 
-				
-				JOptionPane.showMessageDialog(null, path.getFileName());
-
 				String valorHuella = "";
 
 				if (comboFormato.getSelectedItem().toString().equals(Propiedades.HUELLA_FORMATOS[0])) {
@@ -474,12 +508,6 @@ public class TablaHuellasAction extends DataProcessAction {
 				} else if (comboFormato.getSelectedItem().toString().equals(Propiedades.HUELLA_FORMATOS[2])) {
 					valorHuella = "No definido";
 				}
-
-				System.out.println("Hex format 1: " + AOUtil.hexify(hash, false));
-				System.out.println("Base64 format 1: " + Base64.encode(hash));
-
-				// AOUtil.hexify(hash, false)
-				// Base64.encode(hash)
 
 				rtfText = rtfText
 						+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_FICHERO)
@@ -502,7 +530,7 @@ public class TablaHuellasAction extends DataProcessAction {
 							"Formato huella: " + comboAlgoritmo.getSelectedItem().toString() + " - "
 									+ comboFormato.getSelectedItem().toString())
 					+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_FOOTER);
-			System.out.println(rtfText);
+
 			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 			Transferable htmlTransferable = new RtfInputStreamTransferable(rtfText);
 			clipboard.setContents(htmlTransferable, null);

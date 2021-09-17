@@ -71,6 +71,8 @@ public class Propiedades {
 	public static final String PROP_RTF_TABLA_HUELLA = "rtfTablaHuella";
 	public static final String PROP_RTF_TABLA_TAMANO = "rtfTablaTamano";
 	public static final String PROP_RTF_TABLA_FOOTER = "rtfFooter";
+
+	public static final String PROP_RTF_CAMPO_RTF_DEFAULT_FONT = "rtfCampoDefaultFont";
 	
 	public static final String PROP_RTF_CAMPO_TITULO_CONTENIDO = "rtfCampoTituloContenido";
 	public static final String PROP_RTF_CAMPO_FICHERO_TITULO = "rtfCampoFicheroTitulo";

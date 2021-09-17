@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="100"
+   height="40"
+   viewBox="0 0 26.458333 10.583334"
+   version="1.1"
+   id="svg8"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15, custom)"
+   sodipodi:docname="TablaHuellas.svg"
+   inkscape:export-filename="F:\LXD Monitor\CEFTA-MAL Monitor\SVG CEFTA-MAL Monitor\TablaHuellas.png"
+   inkscape:export-xdpi="115"
+   inkscape:export-ydpi="115">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="8"
+     inkscape:cx="70.32975"
+     inkscape:cy="31.824869"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     units="px"
+     showguides="true"
+     inkscape:guide-bbox="true"
+     inkscape:window-width="1920"
+     inkscape:window-height="1001"
+     inkscape:window-x="-9"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Capa 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <g
+       id="g1006"
+       transform="matrix(1.4380477,0,0,1.4317214,-0.84636893,-0.44022532)">
+      <rect
+         style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.15;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         id="rect10"
+         width="4.6774549"
+         height="6.1184897"
+         x="13.360034"
+         y="1.168872"
+         ry="0.37797597" />
+      <rect
+         style="fill:#ebe0e0;fill-opacity:1;stroke:#000000;stroke-width:0.04;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         id="rect10-1"
+         width="3.5894592"
+         height="0.70739174"
+         x="13.903375"
+         y="1.8893892"
+         ry="0" />
+      <rect
+         style="fill:#a8a8ca;fill-opacity:0.992727;stroke:#000000;stroke-width:0.1;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+         id="rect10-5"
+         width="1.3594456"
+         height="0.71088284"
+         x="15.074007"
+         y="-1.3942049"
+         ry="0.043915518"
+         transform="scale(1,-1)" />
+      <text
+         xml:space="preserve"
+         style="font-size:0.512826px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;stroke-width:0.0961548"
+         x="13.78163"
+         y="2.5683718"
+         id="text970"
+         transform="scale(1.0681202,0.93622423)"><tspan
+           sodipodi:role="line"
+           id="tspan968"
+           x="13.78163"
+           y="2.5683718"
+           style="stroke-width:0.0961548">Huellas</tspan></text>
+      <g
+         id="g999"
+         transform="translate(11.375659,-0.28397387)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.04;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="rect10-1-6"
+           width="3.5894592"
+           height="0.70739174"
+           x="2.5277157"
+           y="2.8807547"
+           ry="0" />
+        <text
+           xml:space="preserve"
+           style="font-size:0.272136px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;stroke-width:0.0510255"
+           x="3.0714188"
+           y="2.9331841"
+           id="text970-8"
+           transform="scale(0.88259874,1.1330177)"><tspan
+             sodipodi:role="line"
+             id="tspan968-9"
+             x="3.0714188"
+             y="2.9331841"
+             style="stroke-width:0.0510255">SHA-256: XXXXXXXXXXXX</tspan></text>
+      </g>
+      <g
+         id="g999-5"
+         transform="translate(11.375659,0.42341787)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.04;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="rect10-1-6-2"
+           width="3.5894592"
+           height="0.70739174"
+           x="2.5277157"
+           y="2.8807547"
+           ry="0" />
+        <text
+           xml:space="preserve"
+           style="font-size:0.272136px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;stroke-width:0.0510255"
+           x="3.0714188"
+           y="2.9331841"
+           id="text970-8-2"
+           transform="scale(0.88259874,1.1330177)"><tspan
+             sodipodi:role="line"
+             id="tspan968-9-4"
+             x="3.0714188"
+             y="2.9331841"
+             style="stroke-width:0.0510255">SHA-256: XXXXXXXXXXXX</tspan></text>
+      </g>
+      <g
+         id="g999-1"
+         transform="translate(11.375659,1.1308096)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.04;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="rect10-1-6-7"
+           width="3.5894592"
+           height="0.70739174"
+           x="2.5277157"
+           y="2.8807547"
+           ry="0" />
+        <text
+           xml:space="preserve"
+           style="font-size:0.272136px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;stroke-width:0.0510255"
+           x="3.0714188"
+           y="2.9331841"
+           id="text970-8-29"
+           transform="scale(0.88259874,1.1330177)"><tspan
+             sodipodi:role="line"
+             id="tspan968-9-3"
+             x="3.0714188"
+             y="2.9331841"
+             style="stroke-width:0.0510255">SHA-256: XXXXXXXXXXXX</tspan></text>
+      </g>
+      <g
+         id="g999-7"
+         transform="translate(11.375659,1.8382013)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.04;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="rect10-1-6-4"
+           width="3.5894592"
+           height="0.70739174"
+           x="2.5277157"
+           y="2.8807547"
+           ry="0" />
+        <text
+           xml:space="preserve"
+           style="font-size:0.272136px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;stroke-width:0.0510255"
+           x="3.0714188"
+           y="2.9331841"
+           id="text970-8-6"
+           transform="scale(0.88259874,1.1330177)"><tspan
+             sodipodi:role="line"
+             id="tspan968-9-1"
+             x="3.0714188"
+             y="2.9331841"
+             style="stroke-width:0.0510255">SHA-256: XXXXXXXXXXXX</tspan></text>
+      </g>
+      <g
+         id="g999-9"
+         transform="translate(11.375659,2.545593)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.04;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="rect10-1-6-6"
+           width="3.5894592"
+           height="0.70739174"
+           x="2.5277157"
+           y="2.8807547"
+           ry="0" />
+        <text
+           xml:space="preserve"
+           style="font-size:0.272136px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;stroke-width:0.0510255"
+           x="3.0714188"
+           y="2.9331841"
+           id="text970-8-8"
+           transform="scale(0.88259874,1.1330177)"><tspan
+             sodipodi:role="line"
+             id="tspan968-9-8"
+             x="3.0714188"
+             y="2.9331841"
+             style="stroke-width:0.0510255">SHA-256: XXXXXXXXXXXX</tspan></text>
+      </g>
+      <g
+         id="g999-2"
+         transform="translate(11.375659,3.2529847)">
+        <rect
+           style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.04;stroke-linecap:square;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:fill markers stroke"
+           id="rect10-1-6-0"
+           width="3.5894592"
+           height="0.70739174"
+           x="2.5277157"
+           y="2.8807547"
+           ry="0" />
+        <text
+           xml:space="preserve"
+           style="font-size:0.272136px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;stroke-width:0.0510255"
+           x="3.0714188"
+           y="2.9331841"
+           id="text970-8-69"
+           transform="scale(0.88259874,1.1330177)"><tspan
+             sodipodi:role="line"
+             id="tspan968-9-80"
+             x="3.0714188"
+             y="2.9331841"
+             style="stroke-width:0.0510255">SHA-256: XXXXXXXXXXXX</tspan></text>
+      </g>
+      <path
+         fill-rule="evenodd"
+         d="m 7.8570632,3.8764992 a 0.13229166,0.13229166 0 0 0 0.1324543,0.132129 l 3.1202285,-0.0038 -0.831619,0.833403 a 0.13245878,0.13245878 0 1 0 0.187555,0.187094 l 1.057031,-1.059671 a 0.13229166,0.13229166 0 0 0 -2.3e-4,-0.187325 l -1.059634,-1.057031 a 0.13245888,0.13245888 0 0 0 -0.187095,0.187555 l 0.833667,0.831355 -3.1202289,0.0038 a 0.13229166,0.13229166 0 0 0 -0.1321289,0.132454 z"
+         id="path2"
+         style="stroke-width:0.264583" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.104796;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 1.7884126,0.97857098 2.8521784,-0.00861 V 5.4292004 H 1.3762479 L 1.3597617,1.357348 Z"
+         id="path901" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.104796;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 2.3554345,1.4643374 2.8521783,-0.00861 V 5.9149668 H 1.9432698 L 1.9267835,1.8431144 Z"
+         id="path901-0" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.104796;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 3.0405163,1.9368076 2.8521783,-0.00861 V 6.387437 H 2.6283516 L 2.6118653,2.3155846 Z"
+         id="path901-0-2" />
+      <path
+         style="fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.104796;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+         d="m 3.7019746,2.4092778 2.8521783,-0.00861 V 6.8599072 H 3.2898099 L 3.2733236,2.7880548 Z"
+         id="path901-0-6" />
+    </g>
+  </g>
+</svg>

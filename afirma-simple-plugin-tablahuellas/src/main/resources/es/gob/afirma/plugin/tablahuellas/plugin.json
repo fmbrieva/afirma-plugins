@@ -1,0 +1,23 @@
+{
+	"info": {
+		"name": "tablahuellas",
+		"title": "TablaHuellas",
+		"version_code": 1,
+		"version": "00.01Alpha",
+		"authors": [
+			"Felipe Muñoz Brieva"
+		],
+		"description": "Plugin para elaborar tablas de huellas",
+		"configuration_panel": "es.gob.afirma.plugin.tablahuellas.TablaHuellasConfiguracionPanel"
+	},
+	"buttons": [ 
+		{
+			"title": "Elaborar tablas de huellas",
+			"icon": "es/gob/afirma/plugin/tablahuellas/certificate_16.png",
+			"tooltip": "Elaborar tablas de huellas",
+			"accesible_description": "Elaborar tablas de huellas",
+			"window": "input",
+			"action": "es.gob.afirma.plugin.tablahuellas.TablaHuellasAction"
+		}
+	]
+}

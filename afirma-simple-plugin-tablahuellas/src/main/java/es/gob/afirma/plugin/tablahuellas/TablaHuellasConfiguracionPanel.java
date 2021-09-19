@@ -34,7 +34,11 @@ import java.util.Properties;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JSeparator;
+import javax.swing.SwingConstants;
 import javax.swing.border.BevelBorder;
+import javax.swing.border.TitledBorder;
+
 import es.gob.afirma.standalone.plugins.ConfigurationPanel;
 
 /**
@@ -47,11 +51,26 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 
 	private static final long serialVersionUID = 1L;
 
-	private JPanel mensajeEtiquetas = new JPanel();
+	private JPanel panelEjemploRemisionDocumentos = new JPanel();
+
+	private TitledBorder borderEjemploRemisionDocumentos = new TitledBorder(
+			Messages.getString("ConfiguracionMensaje.1"));
 
 	// Botones
 	private JButton botonAyuda;
-	
+	private JButton botonDocumento1;
+	private JButton botonDocumento2;
+	private JButton botonDocumento3;
+	private JButton botonIndice;
+	private JButton botonOficio;
+	private JButton botonRelaciones;
+
+	private JLabel labelDocumentosParaRemitir = new JLabel(Messages.getString("ConfiguracionBotonTexto.4"));
+
+	private JSeparator separador01 = new JSeparator();
+	private JSeparator separador02 = new JSeparator();
+	private JSeparator separador03 = new JSeparator();
+
 	public TablaHuellasConfiguracionPanel() {
 
 		// Definir Layout
@@ -61,6 +80,7 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 
 		// Botón de ayuda
 		gbc.insets = new Insets(15, 15, 3, 15);
+		
 		gbc.gridx = 2;
 		gbc.gridy = 0;
 		gbc.fill = GridBagConstraints.NONE;
@@ -69,48 +89,156 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 
 		botonAyuda.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
-				// Mostrar fichero de ayuda
-				try {
-					InputStream inputStream = getClass().getClassLoader()
-							.getResourceAsStream(Propiedades.getString(Propiedades.PROP_RUTA_RECURSOS)
-									+ Propiedades.getString(Propiedades.PROP_FICHERO_AYUDA));
-
-					File tempFile = File.createTempFile(Propiedades.getString(Propiedades.PROP_PREFIJO_MANUAL),
-							Propiedades.getString(Propiedades.PROP_SEPARADOR_EXTENSION)
-									+ Propiedades.getString(Propiedades.PROP_EXTENSION_PDF));
-
-					FileOutputStream fos = new FileOutputStream(tempFile);
-					while (inputStream.available() > 0) {
-						fos.write(inputStream.read());
-					}
-					fos.close();
-
-					Desktop.getDesktop().open(tempFile);
-
-					tempFile.deleteOnExit();
-
-				} catch (Exception e1) {
-					e1.printStackTrace();
-				}
-
+				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_AYUDA));
 			}
 		});
 
 		this.add(botonAyuda, gbc);
 
+		// gbc.gridx = 0;
+		// gbc.gridy++;
+		// gbc.gridwidth = GridBagConstraints.REMAINDER;
+		// gbc.fill = GridBagConstraints.HORIZONTAL;
+
+		// separador.setOrientation(SwingConstants.HORIZONTAL);
+		// this.add(separador, gbc);
+
+		botonDocumento1 = new JButton(Messages.getString("ConfiguracionBotonTexto.1"));
+		botonDocumento1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_DOCUMENTO1));
+			}
+		});
+		botonDocumento2 = new JButton(Messages.getString("ConfiguracionBotonTexto.2"));
+		botonDocumento2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_DOCUMENTO2));
+			}
+		});
+		botonDocumento3 = new JButton(Messages.getString("ConfiguracionBotonTexto.3"));
+		botonDocumento3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_DOCUMENTO3));
+			}
+		});
+		botonIndice = new JButton(Messages.getString("ConfiguracionBotonTexto.5"));
+		botonIndice.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_INDICE));
+			}
+		});
+		botonOficio = new JButton(Messages.getString("ConfiguracionBotonTexto.6"));
+		botonOficio.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_OFICIO));
+			}
+		});
+		botonRelaciones = new JButton(Messages.getString("ConfiguracionBotonTexto.7"));
+		botonRelaciones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_RELACIONES));
+			}
+		});
+
+		final GridBagConstraints remisionGbc = new GridBagConstraints();
+		borderEjemploRemisionDocumentos.setTitleJustification(TitledBorder.LEFT);
+		borderEjemploRemisionDocumentos.setTitlePosition(TitledBorder.TOP);
+
+		panelEjemploRemisionDocumentos.setLayout(new GridBagLayout());
+		panelEjemploRemisionDocumentos.setBorder(borderEjemploRemisionDocumentos);
+
+		remisionGbc.insets = new Insets(15, 15, 3, 15);
+
+		remisionGbc.gridx = 0;
+		remisionGbc.gridy = 0;
+		remisionGbc.gridwidth = GridBagConstraints.REMAINDER;
+		remisionGbc.fill = GridBagConstraints.HORIZONTAL;
+
+		separador01.setOrientation(SwingConstants.HORIZONTAL);
+		panelEjemploRemisionDocumentos.add(separador01, remisionGbc);
+
+		remisionGbc.gridx = 0;
+		remisionGbc.gridy++;
+
+		panelEjemploRemisionDocumentos.add(this.labelDocumentosParaRemitir, remisionGbc);
+
+		remisionGbc.gridx = 0;
+		remisionGbc.gridy++;
+		remisionGbc.gridwidth = 1;
+		remisionGbc.fill = GridBagConstraints.NONE;
+		panelEjemploRemisionDocumentos.add(botonDocumento1, remisionGbc);
+
+		remisionGbc.gridx = 1;
+		panelEjemploRemisionDocumentos.add(botonDocumento2, remisionGbc);
+
+		remisionGbc.gridx = 2;
+		panelEjemploRemisionDocumentos.add(botonDocumento3, remisionGbc);
+
+		remisionGbc.gridx = 0;
+		remisionGbc.gridy++;
+		remisionGbc.gridwidth = GridBagConstraints.REMAINDER;
+		remisionGbc.fill = GridBagConstraints.HORIZONTAL;
+
+		separador02.setOrientation(SwingConstants.HORIZONTAL);
+		panelEjemploRemisionDocumentos.add(separador02, remisionGbc);
+
+		remisionGbc.gridx = 0;
+		remisionGbc.gridy++;
+		remisionGbc.gridwidth = 1;
+		remisionGbc.fill = GridBagConstraints.NONE;
+		panelEjemploRemisionDocumentos.add(botonRelaciones, remisionGbc);
+		
+		remisionGbc.gridx = 1;
+		panelEjemploRemisionDocumentos.add(botonOficio, remisionGbc);
+
+		remisionGbc.gridx = 2;
+		panelEjemploRemisionDocumentos.add(botonIndice, remisionGbc);
+
+		remisionGbc.gridx = 0;
+		remisionGbc.gridy++;
+		remisionGbc.gridwidth = GridBagConstraints.REMAINDER;
+		remisionGbc.fill = GridBagConstraints.HORIZONTAL;
+
+		separador03.setOrientation(SwingConstants.HORIZONTAL);
+		panelEjemploRemisionDocumentos.add(separador03, remisionGbc);
+		
+
+
 		// Mensaje etiquetas
-		mensajeEtiquetas.setBorder(new BevelBorder(BevelBorder.LOWERED));
-		mensajeEtiquetas.add(new JLabel(Messages.getString("ConfiguracionMensaje.0")));
-		gbc.insets = new Insets(10, 15, 15, 15);
+
 		gbc.gridx = 0;
 		gbc.gridy++;
 		gbc.gridwidth = GridBagConstraints.REMAINDER;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.anchor = GridBagConstraints.WEST;
-		this.add(mensajeEtiquetas, gbc);
+		this.add(panelEjemploRemisionDocumentos, gbc);
 
-		
+	}
+
+	public void mostrarPdf(String ficheroPdf) {
+
+		try {
+			InputStream inputStream = getClass().getClassLoader()
+					.getResourceAsStream(Propiedades.getString(Propiedades.PROP_RUTA_RECURSOS) + ficheroPdf);
+
+			File tempFile = File.createTempFile(Propiedades.getString(Propiedades.PROP_PREFIJO_MANUAL),
+					Propiedades.getString(Propiedades.PROP_SEPARADOR_EXTENSION)
+							+ Propiedades.getString(Propiedades.PROP_EXTENSION_PDF));
+
+			FileOutputStream fos = new FileOutputStream(tempFile);
+			while (inputStream.available() > 0) {
+				fos.write(inputStream.read());
+			}
+			fos.close();
+
+			Desktop.getDesktop().open(tempFile);
+
+			tempFile.deleteOnExit();
+
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}
+
 	}
 
 	@Override
@@ -119,9 +247,9 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 		Propiedades.etiquetasOriginal.clear();
 
 		if (config.isEmpty()) {
-			
+
 		} else {
-						
+
 		}
 
 	}

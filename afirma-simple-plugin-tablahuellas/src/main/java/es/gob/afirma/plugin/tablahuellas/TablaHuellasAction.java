@@ -151,6 +151,7 @@ public class TablaHuellasAction extends DataProcessAction {
 	JDialog waitDialog = null;
 
 	public TablaHuellasAction() {
+		
 		createUI();
 	}
 
@@ -196,12 +197,10 @@ public class TablaHuellasAction extends DataProcessAction {
 		}
 
 		comboFuente.setSelectedItem(defaultFont);
-
 		documentosLista.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
 		documentosLista.setBorder(BorderFactory.createEmptyBorder(2, 2, 2, 2));
 
 		documentosPanel.setLayout(new BorderLayout());
-		documentosPanel.add(documentosLista);
 		documentosPanel.add(new JScrollPane(documentosLista));
 
 		// JTextField para seleccionar documento
@@ -478,7 +477,7 @@ public class TablaHuellasAction extends DataProcessAction {
 		try {
 
 			String rtfText = Propiedades.getString(Propiedades.PROP_RTF_HEADER)
-					.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_RTF_DEFAULT_FONT), defaultFont)
+					.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_RTF_DEFAULT_FONT), comboFuente.getSelectedItem().toString())
 					+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_TITULO)
 							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TITULO_CONTENIDO),
 									"Ficheros adjuntos")

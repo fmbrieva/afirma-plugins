@@ -58,6 +58,12 @@ public class Propiedades {
 	public static final String PROP_ATTRIBUTE_MIMETYPE = "attributeMimeType";
 	public static final String PROP_RUTA_RECURSOS = "rutaRecursos";
 	public static final String PROP_FICHERO_AYUDA = "ficheroAyuda";
+	public static final String PROP_FICHERO_DOCUMENTO1 = "ficheroDocumento1";
+	public static final String PROP_FICHERO_DOCUMENTO2 = "ficheroDocumento2";
+	public static final String PROP_FICHERO_DOCUMENTO3 = "ficheroDocumento3";
+	public static final String PROP_FICHERO_INDICE = "ficheroIndice";
+	public static final String PROP_FICHERO_OFICIO = "ficheroOficio";
+	public static final String PROP_FICHERO_RELACIONES = "ficheroRelaciones";
 	public static final String PROP_SEPARADOR_LISTA_ETIQUETAS = "separadorListaEtiquetas";
 	public static final String PROP_SEPARADOR_ETIQUETA = "separadorEtiqueta";
 	public static final String PROP_SEPARADOR_EXTENSION = "separadorExtension";

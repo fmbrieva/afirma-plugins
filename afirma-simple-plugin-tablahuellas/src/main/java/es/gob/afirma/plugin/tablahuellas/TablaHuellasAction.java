@@ -119,9 +119,9 @@ public class TablaHuellasAction extends DataProcessAction {
 	private final JLabel etiquetaFuente = new JLabel(Messages.getString("FolderActionTexto.23"));
 	private final JLabel etiquetaPresentacion = new JLabel(Messages.getString("FolderActionTexto.10"));
 	
-	private final JComboBox comboAlgoritmo = new JComboBox(Propiedades.HUELLA_ALGORITMOS);
-	private final JComboBox comboFormato = new JComboBox(Propiedades.HUELLA_FORMATOS);
-	private final JComboBox comboFuente = new JComboBox();
+	private final JComboBox<String> comboAlgoritmo = new JComboBox<>(Propiedades.HUELLA_ALGORITMOS);
+	private final JComboBox<String> comboFormato = new JComboBox<>(Propiedades.HUELLA_FORMATOS);
+	private final JComboBox<String> comboFuente = new JComboBox<>();
 
 	// *
 	private final JRadioButton rbtnTabla = new JRadioButton(Messages.getString("FolderActionTexto.15"), true);

@@ -32,7 +32,9 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -58,14 +60,11 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 
 	// Botones
 	private JButton botonAyuda;
-	private JButton botonDocumento1;
-	private JButton botonDocumento2;
-	private JButton botonDocumento3;
-	private JButton botonIndice;
-	private JButton botonOficio;
-	private JButton botonRelaciones;
+	private JButton botonVerDocumento;
 
-	private JLabel labelDocumentosParaRemitir = new JLabel(Messages.getString("ConfiguracionBotonTexto.4"));
+	private final JComboBox<String> comboDocumentos = new JComboBox<>();
+
+	private JLabel labelDocumentosParaRemitir = new JLabel(Messages.getString("ConfiguracionBotonTexto.2"));
 
 	private JSeparator separador01 = new JSeparator();
 	private JSeparator separador02 = new JSeparator();
@@ -80,7 +79,7 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 
 		// Botón de ayuda
 		gbc.insets = new Insets(15, 15, 3, 15);
-		
+
 		gbc.gridx = 2;
 		gbc.gridy = 0;
 		gbc.fill = GridBagConstraints.NONE;
@@ -95,6 +94,24 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 
 		this.add(botonAyuda, gbc);
 
+		// Combo para seleccionar el algoritmo de Huella Digital
+
+		for (int i = 0; i < Propiedades.EJEMPLO_DOCUMENTOS.length; i++) {
+
+			comboDocumentos.addItem(Propiedades.EJEMPLO_DOCUMENTOS[i][0]);
+		}
+
+		// comboDocumentos.setSelectedIndex(1);
+		/*
+		 * comboDocumentos.addActionListener(new ActionListener() {
+		 * 
+		 * @Override public void actionPerformed(ActionEvent e) {
+		 * JOptionPane.showMessageDialog(null, Propiedades.EJEMPLO_DOCUMENTOS[(int)
+		 * comboDocumentos.getSelectedItem()][1]);
+		 * 
+		 * // mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_DOCUMENTO1)); }
+		 * });
+		 */
 		// gbc.gridx = 0;
 		// gbc.gridy++;
 		// gbc.gridwidth = GridBagConstraints.REMAINDER;
@@ -103,40 +120,10 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 		// separador.setOrientation(SwingConstants.HORIZONTAL);
 		// this.add(separador, gbc);
 
-		botonDocumento1 = new JButton(Messages.getString("ConfiguracionBotonTexto.1"));
-		botonDocumento1.addActionListener(new ActionListener() {
+		botonVerDocumento = new JButton(Messages.getString("ConfiguracionBotonTexto.1"));
+		botonVerDocumento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_DOCUMENTO1));
-			}
-		});
-		botonDocumento2 = new JButton(Messages.getString("ConfiguracionBotonTexto.2"));
-		botonDocumento2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_DOCUMENTO2));
-			}
-		});
-		botonDocumento3 = new JButton(Messages.getString("ConfiguracionBotonTexto.3"));
-		botonDocumento3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_DOCUMENTO3));
-			}
-		});
-		botonIndice = new JButton(Messages.getString("ConfiguracionBotonTexto.5"));
-		botonIndice.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_INDICE));
-			}
-		});
-		botonOficio = new JButton(Messages.getString("ConfiguracionBotonTexto.6"));
-		botonOficio.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_OFICIO));
-			}
-		});
-		botonRelaciones = new JButton(Messages.getString("ConfiguracionBotonTexto.7"));
-		botonRelaciones.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_RELACIONES));
+				mostrarPdf(Propiedades.EJEMPLO_DOCUMENTOS[(int) comboDocumentos.getSelectedIndex()][1].toString());
 			}
 		});
 
@@ -166,33 +153,13 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 		remisionGbc.gridy++;
 		remisionGbc.gridwidth = 1;
 		remisionGbc.fill = GridBagConstraints.NONE;
-		panelEjemploRemisionDocumentos.add(botonDocumento1, remisionGbc);
+		panelEjemploRemisionDocumentos.add(comboDocumentos, remisionGbc);
 
 		remisionGbc.gridx = 1;
-		panelEjemploRemisionDocumentos.add(botonDocumento2, remisionGbc);
-
-		remisionGbc.gridx = 2;
-		panelEjemploRemisionDocumentos.add(botonDocumento3, remisionGbc);
-
-		remisionGbc.gridx = 0;
-		remisionGbc.gridy++;
-		remisionGbc.gridwidth = GridBagConstraints.REMAINDER;
-		remisionGbc.fill = GridBagConstraints.HORIZONTAL;
+		panelEjemploRemisionDocumentos.add(botonVerDocumento, remisionGbc);
 
 		separador02.setOrientation(SwingConstants.HORIZONTAL);
 		panelEjemploRemisionDocumentos.add(separador02, remisionGbc);
-
-		remisionGbc.gridx = 0;
-		remisionGbc.gridy++;
-		remisionGbc.gridwidth = 1;
-		remisionGbc.fill = GridBagConstraints.NONE;
-		panelEjemploRemisionDocumentos.add(botonRelaciones, remisionGbc);
-		
-		remisionGbc.gridx = 1;
-		panelEjemploRemisionDocumentos.add(botonOficio, remisionGbc);
-
-		remisionGbc.gridx = 2;
-		panelEjemploRemisionDocumentos.add(botonIndice, remisionGbc);
 
 		remisionGbc.gridx = 0;
 		remisionGbc.gridy++;
@@ -201,8 +168,6 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 
 		separador03.setOrientation(SwingConstants.HORIZONTAL);
 		panelEjemploRemisionDocumentos.add(separador03, remisionGbc);
-		
-
 
 		// Mensaje etiquetas
 

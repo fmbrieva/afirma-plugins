@@ -42,7 +42,16 @@ public class Propiedades {
 	// Huella Digital
 	public static final String[] HUELLA_ALGORITMOS = { "SHA-1", "SHA-256", "SHA-384", "SHA-512" };
 	public static final String[] HUELLA_FORMATOS = { "Hexadecimal ASCII (Base16)", "Base64", "Binario", };
-	
+
+	// Documentos
+	public static final String[][] EJEMPLO_DOCUMENTOS = {
+			{ "Documento 1 para remitir", "Documento1_Firmado_AutoFirma_v00r00_signed.pdf" },
+			{ "Documento 2 para remitir", "Documento2_Firmado_Adobe_v00r00_signed.pdf" },
+			{ "Documento 3 para remitir", "Documento3_Firmado_Autofirma_Adobe_v00r00_signed.pdf" },
+			{ "Remisión de documentos (Índice)", "Remision_Documentos_v00r00_signed.pdf" },
+			{ "Oficio de remisión", "Oficio_Remision_Documentos_v00r00_signed.pdf" },
+			{ "Relaciones entre documentos", "Relacion_Orden_Transitiva_v00r00.pdf" }, };
+
 	// Archivo con propiedades
 	private static final String BUNDLE_NAME = "es.gob.afirma.plugin.tablahuellas.propiedades";
 	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
@@ -68,10 +77,10 @@ public class Propiedades {
 	public static final String PROP_SEPARADOR_ETIQUETA = "separadorEtiqueta";
 	public static final String PROP_SEPARADOR_EXTENSION = "separadorExtension";
 	public static final String PROP_CONFIG_ETIQUETAS = "configEtiquetas";
-	
+
 	public static final String PROP_RTF_HEADER = "rtfHeader";
 	public static final String PROP_RTF_TABLA_TITULO = "rtfTablaTitulo";
-	public static final String PROP_RTF_TABLA_TITULO_HUELLA_FORMATO = "rtfTablaTituloHuellaFormato";	
+	public static final String PROP_RTF_TABLA_TITULO_HUELLA_FORMATO = "rtfTablaTituloHuellaFormato";
 	public static final String PROP_RTF_TABLA_FICHERO = "rtfTablaFichero";
 	public static final String PROP_RTF_TABLA_CSV = "rtfTablaCsv";
 	public static final String PROP_RTF_TABLA_HUELLA = "rtfTablaHuella";
@@ -79,7 +88,7 @@ public class Propiedades {
 	public static final String PROP_RTF_TABLA_FOOTER = "rtfFooter";
 
 	public static final String PROP_RTF_CAMPO_RTF_DEFAULT_FONT = "rtfCampoDefaultFont";
-	
+
 	public static final String PROP_RTF_CAMPO_TITULO_CONTENIDO = "rtfCampoTituloContenido";
 	public static final String PROP_RTF_CAMPO_FICHERO_TITULO = "rtfCampoFicheroTitulo";
 	public static final String PROP_RTF_CAMPO_FICHERO_CONTENIDO = "rtfCampoFicheroContenido";

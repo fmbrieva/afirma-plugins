@@ -21,7 +21,6 @@
 package es.gob.afirma.plugin.tablahuellas;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
@@ -32,13 +31,6 @@ import java.util.ResourceBundle;
  */
 public class Propiedades {
 
-	// Ficheros de firma con documento original embebido:
-	//
-	// - HELP: Diputación Provincial de Málaga -> document,content
-	//
-	public static final ArrayList<String> ETIQUETAS_ORIGINAL_BASE = new ArrayList<String>(
-			Arrays.asList("document,content", "enidoc:documento,enifile:contenido,enifile:ValorBinario"));
-
 	// Huella Digital
 	public static final String[] HUELLA_ALGORITMOS = { "SHA-1", "SHA-256", "SHA-384", "SHA-512" };
 	public static final String[] HUELLA_FORMATOS = { "Hexadecimal ASCII (Base16)", "Base64", "Binario", };
@@ -48,9 +40,8 @@ public class Propiedades {
 			{ "Documento 1 para remitir", "Documento1_Firmado_AutoFirma_v00r00_signed.pdf" },
 			{ "Documento 2 para remitir", "Documento2_Firmado_Adobe_v00r00_signed.pdf" },
 			{ "Documento 3 para remitir", "Documento3_Firmado_Autofirma_Adobe_v00r00_signed.pdf" },
-			{ "Remisión de documentos (Índice)", "Remision_Documentos_v00r00_signed.pdf" },
-			{ "Oficio de remisión", "Oficio_Remision_Documentos_v00r00_signed.pdf" },
-			{ "Relaciones entre documentos", "Relacion_Orden_Transitiva_v00r00.pdf" }, };
+			{ "Índice de documentos (Certificado)", "Indice_Documentos_v00r00_signed.pdf" },
+			{ "Relaciones entre documentos", "Relaciones_Documentos_v00r00.pdf" }, };
 
 	// Archivo con propiedades
 	private static final String BUNDLE_NAME = "es.gob.afirma.plugin.tablahuellas.propiedades";
@@ -71,12 +62,9 @@ public class Propiedades {
 	public static final String PROP_FICHERO_DOCUMENTO2 = "ficheroDocumento2";
 	public static final String PROP_FICHERO_DOCUMENTO3 = "ficheroDocumento3";
 	public static final String PROP_FICHERO_INDICE = "ficheroIndice";
-	public static final String PROP_FICHERO_OFICIO = "ficheroOficio";
 	public static final String PROP_FICHERO_RELACIONES = "ficheroRelaciones";
-	public static final String PROP_SEPARADOR_LISTA_ETIQUETAS = "separadorListaEtiquetas";
-	public static final String PROP_SEPARADOR_ETIQUETA = "separadorEtiqueta";
+	public static final String PROP_FICHERO_EJEMPLO_USO = "ficheroEjemploUso";
 	public static final String PROP_SEPARADOR_EXTENSION = "separadorExtension";
-	public static final String PROP_CONFIG_ETIQUETAS = "configEtiquetas";
 
 	public static final String PROP_RTF_HEADER = "rtfHeader";
 	public static final String PROP_RTF_TABLA_TITULO = "rtfTablaTitulo";

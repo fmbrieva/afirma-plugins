@@ -38,7 +38,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 
 import es.gob.afirma.standalone.plugins.ConfigurationPanel;
@@ -61,10 +60,12 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 	// Botones
 	private JButton botonAyuda;
 	private JButton botonVerDocumento;
+	private JButton botonEjemplo;
 
 	private final JComboBox<String> comboDocumentos = new JComboBox<>();
 
-	private JLabel labelDocumentosParaRemitir = new JLabel(Messages.getString("ConfiguracionBotonTexto.2"));
+	private JLabel labelEjemploUso = new JLabel(Messages.getString("ConfiguracionMensaje.2"));
+	private JLabel labelDocumentosUtilizados = new JLabel(Messages.getString("ConfiguracionMensaje.3"));
 
 	private JSeparator separador01 = new JSeparator();
 	private JSeparator separador02 = new JSeparator();
@@ -101,29 +102,17 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 			comboDocumentos.addItem(Propiedades.EJEMPLO_DOCUMENTOS[i][0]);
 		}
 
-		// comboDocumentos.setSelectedIndex(1);
-		/*
-		 * comboDocumentos.addActionListener(new ActionListener() {
-		 * 
-		 * @Override public void actionPerformed(ActionEvent e) {
-		 * JOptionPane.showMessageDialog(null, Propiedades.EJEMPLO_DOCUMENTOS[(int)
-		 * comboDocumentos.getSelectedItem()][1]);
-		 * 
-		 * // mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_DOCUMENTO1)); }
-		 * });
-		 */
-		// gbc.gridx = 0;
-		// gbc.gridy++;
-		// gbc.gridwidth = GridBagConstraints.REMAINDER;
-		// gbc.fill = GridBagConstraints.HORIZONTAL;
-
-		// separador.setOrientation(SwingConstants.HORIZONTAL);
-		// this.add(separador, gbc);
-
 		botonVerDocumento = new JButton(Messages.getString("ConfiguracionBotonTexto.1"));
 		botonVerDocumento.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mostrarPdf(Propiedades.EJEMPLO_DOCUMENTOS[(int) comboDocumentos.getSelectedIndex()][1].toString());
+			}
+		});
+
+		botonEjemplo = new JButton(Messages.getString("ConfiguracionBotonTexto.2"));
+		botonEjemplo.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mostrarPdf(Propiedades.getString(Propiedades.PROP_FICHERO_EJEMPLO_USO));
 			}
 		});
 
@@ -146,8 +135,23 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 
 		remisionGbc.gridx = 0;
 		remisionGbc.gridy++;
+		remisionGbc.gridwidth = 1;
+		panelEjemploRemisionDocumentos.add(this.labelEjemploUso, remisionGbc);
 
-		panelEjemploRemisionDocumentos.add(this.labelDocumentosParaRemitir, remisionGbc);
+		remisionGbc.gridx = 1;
+
+		panelEjemploRemisionDocumentos.add(botonEjemplo, remisionGbc);
+
+		remisionGbc.gridx = 0;
+		remisionGbc.gridy++;
+		remisionGbc.gridwidth = GridBagConstraints.REMAINDER;
+		remisionGbc.fill = GridBagConstraints.HORIZONTAL;
+		separador02.setOrientation(SwingConstants.HORIZONTAL);
+		panelEjemploRemisionDocumentos.add(separador02, remisionGbc);
+
+		remisionGbc.gridx = 0;
+		remisionGbc.gridy++;
+		panelEjemploRemisionDocumentos.add(this.labelDocumentosUtilizados, remisionGbc);
 
 		remisionGbc.gridx = 0;
 		remisionGbc.gridy++;
@@ -157,9 +161,6 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 
 		remisionGbc.gridx = 1;
 		panelEjemploRemisionDocumentos.add(botonVerDocumento, remisionGbc);
-
-		separador02.setOrientation(SwingConstants.HORIZONTAL);
-		panelEjemploRemisionDocumentos.add(separador02, remisionGbc);
 
 		remisionGbc.gridx = 0;
 		remisionGbc.gridy++;
@@ -225,7 +226,7 @@ public class TablaHuellasConfiguracionPanel extends ConfigurationPanel {
 		// Crear el objeto de propiedades y guardar los valores
 
 		final Properties config = new Properties();
-		config.setProperty(Propiedades.getString(Propiedades.PROP_CONFIG_ETIQUETAS), "");
+
 
 		return config;
 	}

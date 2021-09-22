@@ -34,9 +34,6 @@ public class TablaHuellasPlugin extends AfirmaPlugin {
 	// Ejecutar durante la instalación del plugin
 	public void install() throws PluginControlledException {
 
-		for (int i = 0; i < Propiedades.ETIQUETAS_ORIGINAL_BASE.size(); i++) {
-			Propiedades.etiquetasOriginal.add(Propiedades.ETIQUETAS_ORIGINAL_BASE.get(i));		
-		}
 		
 	}
 

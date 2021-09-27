@@ -46,7 +46,10 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.MessageDigest;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
@@ -113,12 +116,14 @@ public class TablaHuellasAction extends DataProcessAction {
 	private DefaultListModel<String> documentosModelo = new DefaultListModel<>();
 	private JList<String> documentosLista = new JList<>(documentosModelo);
 
+	private DefaultListModel<String> documentosModeloSoloFicheros = new DefaultListModel<>();
+
 	// *
 	private final JLabel etiquetaAlgoritmo = new JLabel(Messages.getString("FolderActionTexto.21"));
 	private final JLabel etiquetaFormato = new JLabel(Messages.getString("FolderActionTexto.22"));
 	private final JLabel etiquetaFuente = new JLabel(Messages.getString("FolderActionTexto.23"));
 	private final JLabel etiquetaPresentacion = new JLabel(Messages.getString("FolderActionTexto.10"));
-	
+
 	private final JComboBox<String> comboAlgoritmo = new JComboBox<>(Propiedades.HUELLA_ALGORITMOS);
 	private final JComboBox<String> comboFormato = new JComboBox<>(Propiedades.HUELLA_FORMATOS);
 	private final JComboBox<String> comboFuente = new JComboBox<>();
@@ -128,15 +133,9 @@ public class TablaHuellasAction extends DataProcessAction {
 	private final JRadioButton rbtnTexto = new JRadioButton(Messages.getString("FolderActionTexto.16"), false);
 	private final ButtonGroup btngrpCopiarPortapapeles = new ButtonGroup();
 
-	// private JButton botonPortapapeles = new
-	// JButton(Messages.getString("FolderActionTexto.0"));
 	private ImageIcon icon = new ImageIcon(
 			getClass().getResource("/es/gob/afirma/plugin/tablahuellas/TablaHuellas.png"));
 	private JButton botonPortapapeles = new JButton(Messages.getString("FolderActionTexto.0"));
-
-	// private JButton botonPortapapeles = new
-	// JButton(Messages.getString("FolderActionTexto.0"),
-	// new ImageIcon(this.getClass().getResource("/images/cancel.png")));
 
 	private boolean pulsadoPortapapeles = true;
 
@@ -151,7 +150,7 @@ public class TablaHuellasAction extends DataProcessAction {
 	JDialog waitDialog = null;
 
 	public TablaHuellasAction() {
-		
+
 		createUI();
 	}
 
@@ -240,6 +239,7 @@ public class TablaHuellasAction extends DataProcessAction {
 				seleccionarDocumento.setText(AOUIFactory.getLoadFiles(Messages.getString("FolderActionTexto.7"), null,
 						null, null, Messages.getString("FolderActionTexto.8"), true, true, null, null)[0]
 								.getAbsolutePath());
+
 				documentosModelo.addElement(seleccionarDocumento.getText());
 
 			} catch (final AOCancelledOperationException ex) {
@@ -279,7 +279,8 @@ public class TablaHuellasAction extends DataProcessAction {
 		comboAlgoritmo.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//JOptionPane.showMessageDialog(null, comboAlgoritmo.getSelectedItem().toString());
+				// JOptionPane.showMessageDialog(null,
+				// comboAlgoritmo.getSelectedItem().toString());
 			}
 		});
 
@@ -288,7 +289,8 @@ public class TablaHuellasAction extends DataProcessAction {
 		comboFormato.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				//JOptionPane.showMessageDialog(null, comboFormato.getSelectedItem().toString());
+				// JOptionPane.showMessageDialog(null,
+				// comboFormato.getSelectedItem().toString());
 			}
 		});
 
@@ -470,26 +472,68 @@ public class TablaHuellasAction extends DataProcessAction {
 
 	}
 
+	public List<File> listf(String directorioNombre) {
+
+		File directorio = new File(directorioNombre);
+
+		List<File> resultList = new ArrayList<File>();
+
+		File[] listadoFicheros = directorio.listFiles();
+		resultList.addAll(Arrays.asList(listadoFicheros));
+
+		for (File fichero : listadoFicheros) {
+			if (fichero.isFile()) {
+				documentosModeloSoloFicheros.addElement(fichero.getAbsolutePath().toString());
+			} else if (fichero.isDirectory()) {
+				resultList.addAll(listf(fichero.getAbsolutePath()));
+			}
+		}
+
+		return resultList;
+
+	}
+
 	public void copiarTablaHtml() {
 
-		int size = documentosModelo.getSize();
+		int sizeDocumentosModelo = documentosModelo.getSize();
+
+		documentosModeloSoloFicheros.clear();
+
+
+		for (int i = 0; i < sizeDocumentosModelo; i++) {
+			
+			Path path = Paths.get(documentosModelo.getElementAt(i).toString());			
+
+			if (Files.isRegularFile(path)) {
+				documentosModeloSoloFicheros.addElement(documentosModelo.getElementAt(i).toString());
+			}
+			
+			if (Files.isDirectory(path)) {
+				listf(documentosModelo.getElementAt(i).toString());
+			}
+			
+		}
 
 		try {
 
-			String rtfText = Propiedades.getString(Propiedades.PROP_RTF_HEADER)
-					.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_RTF_DEFAULT_FONT), comboFuente.getSelectedItem().toString())
+			String rtfText = Propiedades.getString(Propiedades.PROP_RTF_HEADER).replace(
+					Propiedades.getString(Propiedades.PROP_RTF_CAMPO_RTF_DEFAULT_FONT),
+					comboFuente.getSelectedItem().toString())
 					+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_TITULO)
 							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TITULO_CONTENIDO),
 									"Ficheros adjuntos")
 							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TITULO_HUELLA_FORMATO),
 									"Formato huella: SHA-512 - Hexadecimal");
 
-			for (int i = 0; i < size; i++) {
+			int sizeDocumentosModeloSoloFicheros = documentosModeloSoloFicheros.getSize();
+
+			for (int i = 0; i < sizeDocumentosModeloSoloFicheros; i++) {
+
+				Path path = Paths.get(documentosModeloSoloFicheros.getElementAt(i).toString());
 
 				FileInputStream inputStream = new FileInputStream(
-						new File(documentosModelo.getElementAt(i).toString()));
+						new File(documentosModeloSoloFicheros.getElementAt(i).toString()));
 
-				Path path = Paths.get(documentosModelo.getElementAt(i).toString());
 				long bytes = Files.size(path);
 				String bytesFormat = String.format("%,d bytes", bytes);
 
@@ -571,7 +615,9 @@ public class TablaHuellasAction extends DataProcessAction {
 		final SwingWorker<Void, Void> validationWorker = new SwingWorker<Void, Void>() {
 			@Override
 			protected Void doInBackground() throws Exception {
-				// Thread.sleep(3000);
+
+				// Buscar todos los documentos que deben ser añadidos en la tabla
+
 				if (html) {
 					copiarTablaHtml();
 				} else {

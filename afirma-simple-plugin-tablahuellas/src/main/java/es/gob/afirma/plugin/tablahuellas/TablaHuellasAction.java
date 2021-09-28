@@ -40,8 +40,11 @@ import java.awt.datatransfer.Transferable;
 import java.awt.Dialog.ModalityType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -110,6 +113,7 @@ public class TablaHuellasAction extends DataProcessAction {
 	private JButton botonBorrarTodo = new JButton(Messages.getString("FolderActionTexto.19"));
 	private final JCheckBox checkBoxSubdirectorio = new JCheckBox(Messages.getString("FolderActionTexto.13"));
 	private final JCheckBox checkBoxSoloPdf = new JCheckBox(Messages.getString("FolderActionTexto.14"));
+	private final JCheckBox checkBoxCrearHexhash = new JCheckBox(Messages.getString("FolderActionTexto.24"));
 
 	private final static JTextField seleccionarDocumento = new JTextField();
 
@@ -125,7 +129,7 @@ public class TablaHuellasAction extends DataProcessAction {
 	private final JLabel etiquetaPresentacion = new JLabel(Messages.getString("FolderActionTexto.10"));
 
 	private final JComboBox<String> comboAlgoritmo = new JComboBox<>(Propiedades.HUELLA_ALGORITMOS);
-	private final JComboBox<String> comboFormato = new JComboBox<>(Propiedades.HUELLA_FORMATOS);
+	private final JComboBox<String> comboFormato = new JComboBox<>();
 	private final JComboBox<String> comboFuente = new JComboBox<>();
 
 	// *
@@ -158,7 +162,7 @@ public class TablaHuellasAction extends DataProcessAction {
 	public void processData(InputData[] data, Window parent) {
 
 		this.dialogoEntrada.setResizable(false);
-		this.dialogoEntrada.setSize(600, 600);
+		this.dialogoEntrada.setSize(650, 600);
 		this.dialogoEntrada.setLocationRelativeTo(parent);
 		this.dialogoEntrada.setVisible(true);
 
@@ -187,6 +191,12 @@ public class TablaHuellasAction extends DataProcessAction {
 		// use for loop to pull the elements of array to hashmap's key
 		for (int j = 0; j < allFonts.length; j++) {
 			set.add(allFonts[j].getFamily());
+		}
+
+		// Combo Formato
+		for (int i = 0; i < Propiedades.HUELLA_FORMATOS.length; i++) {
+
+			comboFormato.addItem(Propiedades.HUELLA_FORMATOS[i][0]);
 		}
 
 		// print the set
@@ -340,6 +350,9 @@ public class TablaHuellasAction extends DataProcessAction {
 		// Checkbox para seleccionar solo pdf
 		checkBoxSoloPdf.setSelected(true);
 
+		// Checkbox para controlar si deben crearse ficheros hexhash
+		checkBoxCrearHexhash.setSelected(false);
+
 		// Grupo Radio Button para seleccionar el formato de copia al portapapeles
 		btngrpCopiarPortapapeles.add(rbtnTabla);
 		btngrpCopiarPortapapeles.add(rbtnTexto);
@@ -419,6 +432,8 @@ public class TablaHuellasAction extends DataProcessAction {
 		panelFormatoHuella.add(etiquetaFormato);
 		panelFormatoHuella.add(comboFormato);
 
+		panelFormatoHuella.add(checkBoxCrearHexhash);
+
 		// Panel Copiar ------------------------------------------------------------
 		borderCopiar.setTitleJustification(TitledBorder.LEFT);
 		borderCopiar.setTitlePosition(TitledBorder.TOP);
@@ -472,7 +487,7 @@ public class TablaHuellasAction extends DataProcessAction {
 
 	}
 
-	public List<File> listf(String directorioNombre) {
+	public List<File> listarFicheros(String directorioNombre) {
 
 		File directorio = new File(directorioNombre);
 
@@ -485,12 +500,57 @@ public class TablaHuellasAction extends DataProcessAction {
 			if (fichero.isFile()) {
 				documentosModeloSoloFicheros.addElement(fichero.getAbsolutePath().toString());
 			} else if (fichero.isDirectory()) {
-				resultList.addAll(listf(fichero.getAbsolutePath()));
+
+				// Deben incluirse los subdirectorios?
+				if (checkBoxSubdirectorio.isSelected()) {
+					resultList.addAll(listarFicheros(fichero.getAbsolutePath()));
+				}
 			}
 		}
 
 		return resultList;
 
+	}
+
+	// Convertir string a RTF
+	public static String stringToRtf(String s) {
+		StringBuilder stringCodificado = new StringBuilder();
+
+		for (char ch : s.toCharArray()) {
+			stringCodificado.append(charToRtf(ch));
+		}
+
+		return stringCodificado.toString();
+	}
+
+	// Convertir char a RTF
+	public static String charToRtf(char c) {
+		int intCode = c;
+
+		String charToHex = Integer.toHexString(c);
+
+		if (Character.isLetter(c) && intCode < 128) {
+			return String.valueOf(c);
+		}
+
+		return "\\'" + charToHex;
+
+	}
+
+	public void crearHexhash(String fichero, String valorHuella) {
+
+		File ficheroHexhash = new File(fichero);
+
+		try {
+
+			BufferedWriter bw = new BufferedWriter(new FileWriter(ficheroHexhash));
+			bw.write(valorHuella);
+			bw.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void copiarTablaHtml() {
@@ -499,19 +559,18 @@ public class TablaHuellasAction extends DataProcessAction {
 
 		documentosModeloSoloFicheros.clear();
 
-
 		for (int i = 0; i < sizeDocumentosModelo; i++) {
-			
-			Path path = Paths.get(documentosModelo.getElementAt(i).toString());			
+
+			Path path = Paths.get(documentosModelo.getElementAt(i).toString());
 
 			if (Files.isRegularFile(path)) {
 				documentosModeloSoloFicheros.addElement(documentosModelo.getElementAt(i).toString());
 			}
-			
+
 			if (Files.isDirectory(path)) {
-				listf(documentosModelo.getElementAt(i).toString());
+				listarFicheros(documentosModelo.getElementAt(i).toString());
 			}
-			
+
 		}
 
 		try {
@@ -531,6 +590,12 @@ public class TablaHuellasAction extends DataProcessAction {
 
 				Path path = Paths.get(documentosModeloSoloFicheros.getElementAt(i).toString());
 
+				if (path.getFileName().toString().endsWith(Propiedades.HUELLA_FORMATOS[0][1])
+						|| path.getFileName().toString().endsWith(Propiedades.HUELLA_FORMATOS[1][1])
+						|| path.getFileName().toString().endsWith(Propiedades.HUELLA_FORMATOS[2][1])) {
+					continue;
+				}
+
 				FileInputStream inputStream = new FileInputStream(
 						new File(documentosModeloSoloFicheros.getElementAt(i).toString()));
 
@@ -542,13 +607,13 @@ public class TablaHuellasAction extends DataProcessAction {
 
 				String valorHuella = "";
 
-				if (comboFormato.getSelectedItem().toString().equals(Propiedades.HUELLA_FORMATOS[0])) {
+				if (comboFormato.getSelectedItem().toString().equals(Propiedades.HUELLA_FORMATOS[0][0])) {
 					// 0 -> Hexadecimal
 					valorHuella = AOUtil.hexify(hash, false);
-				} else if (comboFormato.getSelectedItem().toString().equals(Propiedades.HUELLA_FORMATOS[1])) {
+				} else if (comboFormato.getSelectedItem().toString().equals(Propiedades.HUELLA_FORMATOS[1][0])) {
 					// 1 -> Base64
 					valorHuella = Base64.encode(hash);
-				} else if (comboFormato.getSelectedItem().toString().equals(Propiedades.HUELLA_FORMATOS[2])) {
+				} else if (comboFormato.getSelectedItem().toString().equals(Propiedades.HUELLA_FORMATOS[2][0])) {
 					valorHuella = "No definido";
 				}
 
@@ -556,15 +621,25 @@ public class TablaHuellasAction extends DataProcessAction {
 						+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_FICHERO)
 								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_FICHERO_TITULO), "Fichero:")
 								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_FICHERO_CONTENIDO),
-										path.getFileName().toString())
+										stringToRtf(path.getFileName().toString()))
 						+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_TAMANO)
-								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TAMANO_TITULO), "Tamano:")
+								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TAMANO_TITULO),
+										stringToRtf("Tamaño:"))
 								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TAMANO_CONTENIDO),
 										bytesFormat)
 						+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_HUELLA)
 								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_HUELLA_TITULO), "Huella:")
 								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_HUELLA_CONTENIDO),
 										valorHuella);
+
+				if (checkBoxCrearHexhash.isSelected()) {
+					crearHexhash(
+							documentosModeloSoloFicheros.getElementAt(i).toString()
+									+ Propiedades.HUELLA_FORMATOS[(int) comboFormato.getSelectedIndex()][1].toString(),
+							valorHuella);
+
+				}
+
 			}
 
 			rtfText = rtfText

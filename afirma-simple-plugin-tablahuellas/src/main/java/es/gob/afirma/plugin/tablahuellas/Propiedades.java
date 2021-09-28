@@ -33,7 +33,8 @@ public class Propiedades {
 
 	// Huella Digital
 	public static final String[] HUELLA_ALGORITMOS = { "SHA-1", "SHA-256", "SHA-384", "SHA-512" };
-	public static final String[] HUELLA_FORMATOS = { "Hexadecimal ASCII (Base16)", "Base64", "Binario", };
+	public static final String[][] HUELLA_FORMATOS = { { "Hexadecimal ASCII (Base16)", ".hexhash" },
+			{ "Base64", ".hashb64" }, { "Binario", ".hash" } };
 
 	// Documentos
 	public static final String[][] EJEMPLO_DOCUMENTOS = {

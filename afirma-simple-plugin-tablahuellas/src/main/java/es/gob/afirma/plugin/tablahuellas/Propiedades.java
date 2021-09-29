@@ -71,7 +71,7 @@ public class Propiedades {
 	public static final String PROP_RTF_TABLA_TITULO = "rtfTablaTitulo";
 	public static final String PROP_RTF_TABLA_TITULO_HUELLA_FORMATO = "rtfTablaTituloHuellaFormato";
 	public static final String PROP_RTF_TABLA_FICHERO = "rtfTablaFichero";
-	public static final String PROP_RTF_TABLA_CSV = "rtfTablaCsv";
+	public static final String PROP_RTF_TABLA_CARPETA = "rtfTablaCarpeta";
 	public static final String PROP_RTF_TABLA_HUELLA = "rtfTablaHuella";
 	public static final String PROP_RTF_TABLA_TAMANO = "rtfTablaTamano";
 	public static final String PROP_RTF_TABLA_FOOTER = "rtfFooter";
@@ -81,13 +81,21 @@ public class Propiedades {
 	public static final String PROP_RTF_CAMPO_TITULO_CONTENIDO = "rtfCampoTituloContenido";
 	public static final String PROP_RTF_CAMPO_FICHERO_TITULO = "rtfCampoFicheroTitulo";
 	public static final String PROP_RTF_CAMPO_FICHERO_CONTENIDO = "rtfCampoFicheroContenido";
-	public static final String PROP_RTF_CAMPO_CSV_TITULO = "rtfCampoCsvTitulo";
-	public static final String PROP_RTF_CAMPO_CSV_CONTENIDO = "rtfCampoCsvContenido";
+	public static final String PROP_RTF_CAMPO_CARPETA_TITULO = "rtfCampoCarpetaTitulo";
+	public static final String PROP_RTF_CAMPO_CARPETA_CONTENIDO = "rtfCampoCarpetaContenido";
 	public static final String PROP_RTF_CAMPO_HUELLA_TITULO = "rtfCampoHuellaTitulo";
 	public static final String PROP_RTF_CAMPO_HUELLA_CONTENIDO = "rtfCampoHuellaContenido";
 	public static final String PROP_RTF_CAMPO_TAMANO_TITULO = "rtfCampoTamanoTitulo";
 	public static final String PROP_RTF_CAMPO_TAMANO_CONTENIDO = "rtfCampoTamanoContenido";
 	public static final String PROP_RTF_CAMPO_TITULO_HUELLA_FORMATO = "rtfCampoTituloHuellaFormato";
+	
+	public static final String PROP_TABLA_TITULO = "tablaTitulo";
+	public static final String PROP_TABLA_FICHERO = "tablaFichero";
+	public static final String PROP_TABLA_CARPETA = "tablaCarpeta";
+	public static final String PROP_TABLA_TAMANO = "tablaTamano";
+	public static final String PROP_TABLA_HUELLA = "tablaHuella";
+	
+	public static final String PROP_FORMATO_HUELLA = "formatoHuella";
 
 	// Etiquetas a documentos originales
 	public static ArrayList<String> etiquetasOriginal = new ArrayList<String>();

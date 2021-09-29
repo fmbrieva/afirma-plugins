@@ -3,11 +3,11 @@
 		"name": "tablahuellas",
 		"title": "TablaHuellas",
 		"version_code": 1,
-		"version": "00.01Alpha06",
+		"version": "00.01Beta1",
 		"authors": [
 			"Felipe Muñoz Brieva"
 		],
-		"description": "Plugin para elaborar tablas de huellas.\n\nMediante el botón 'Configurar' puede acceder al manual de ayuda y a un ejemplo de uso para la creación de un índice de huellas digitales.",
+		"description": "Plugin para elaborar tablas de huellas.<br><br>Mediante el botón 'Configurar' puede acceder al manual de ayuda y a un ejemplo de uso para la creación de un índice de huellas digitales.",
 		"configuration_panel": "es.gob.afirma.plugin.tablahuellas.TablaHuellasConfiguracionPanel"
 	},
 	"buttons": [ 

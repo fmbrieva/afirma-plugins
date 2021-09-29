@@ -114,6 +114,8 @@ public class TablaHuellasAction extends DataProcessAction {
 	private final JCheckBox checkBoxSubdirectorio = new JCheckBox(Messages.getString("FolderActionTexto.13"));
 	private final JCheckBox checkBoxSoloPdf = new JCheckBox(Messages.getString("FolderActionTexto.14"));
 	private final JCheckBox checkBoxCrearHexhash = new JCheckBox(Messages.getString("FolderActionTexto.24"));
+	private final JCheckBox checkBoxIncluirTamano = new JCheckBox(Messages.getString("FolderActionTexto.15"));
+	private final JCheckBox checkBoxIncluirCarpeta = new JCheckBox(Messages.getString("FolderActionTexto.16"));
 
 	private final static JTextField seleccionarDocumento = new JTextField();
 
@@ -132,16 +134,9 @@ public class TablaHuellasAction extends DataProcessAction {
 	private final JComboBox<String> comboFormato = new JComboBox<>();
 	private final JComboBox<String> comboFuente = new JComboBox<>();
 
-	// *
-	private final JRadioButton rbtnTabla = new JRadioButton(Messages.getString("FolderActionTexto.15"), true);
-	private final JRadioButton rbtnTexto = new JRadioButton(Messages.getString("FolderActionTexto.16"), false);
-	private final ButtonGroup btngrpCopiarPortapapeles = new ButtonGroup();
-
 	private ImageIcon icon = new ImageIcon(
 			getClass().getResource("/es/gob/afirma/plugin/tablahuellas/TablaHuellas.png"));
 	private JButton botonPortapapeles = new JButton(Messages.getString("FolderActionTexto.0"));
-
-	private boolean pulsadoPortapapeles = true;
 
 	// *
 	private JButton botonSalir = new JButton(Messages.getString("FolderActionTexto.1"));
@@ -149,7 +144,7 @@ public class TablaHuellasAction extends DataProcessAction {
 	private String defaultFont = "";
 
 	// *
-	boolean extraerDocumentos = false;
+	boolean crearTabla = false;
 
 	JDialog waitDialog = null;
 
@@ -166,9 +161,9 @@ public class TablaHuellasAction extends DataProcessAction {
 		this.dialogoEntrada.setLocationRelativeTo(parent);
 		this.dialogoEntrada.setVisible(true);
 
-		if (extraerDocumentos) {
+		if (crearTabla) {
 
-			final SwingWorker<?, ?> validationWorker = extraerDocumentosXML(pulsadoPortapapeles);
+			final SwingWorker<?, ?> validationWorker = crearTablaRtf();
 			showWaitDialog(parent, validationWorker);
 			AOUIFactory.showMessageDialog(parent, Messages.getString("FolderActionTexto.6"),
 					Messages.getString("FolderActionTexto.5"), JOptionPane.PLAIN_MESSAGE);
@@ -322,12 +317,8 @@ public class TablaHuellasAction extends DataProcessAction {
 		botonPortapapeles.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dialogoEntrada.dispose();
-				if (rbtnTabla.isSelected()) {
-					pulsadoPortapapeles = true;
-				} else {
-					pulsadoPortapapeles = false;
-				}
-				extraerDocumentos = true;
+
+				crearTabla = true;
 			}
 		});
 
@@ -339,7 +330,7 @@ public class TablaHuellasAction extends DataProcessAction {
 			public void actionPerformed(ActionEvent e) {
 				documentosModelo.removeAllElements();
 				dialogoEntrada.dispose();
-				extraerDocumentos = false;
+				crearTabla = false;
 
 			}
 		});
@@ -353,9 +344,11 @@ public class TablaHuellasAction extends DataProcessAction {
 		// Checkbox para controlar si deben crearse ficheros hexhash
 		checkBoxCrearHexhash.setSelected(false);
 
-		// Grupo Radio Button para seleccionar el formato de copia al portapapeles
-		btngrpCopiarPortapapeles.add(rbtnTabla);
-		btngrpCopiarPortapapeles.add(rbtnTexto);
+		// Checkbox para controlar si debe incluirse el tamaño en la tabla
+		checkBoxIncluirTamano.setSelected(false);
+
+		// Checkbox para controlar si debe incluirse la carpeta en la tabla
+		checkBoxIncluirCarpeta.setSelected(true);
 
 		// PANELES -----------------------------------------------------------------
 
@@ -444,8 +437,8 @@ public class TablaHuellasAction extends DataProcessAction {
 		panelCopiar.add(etiquetaFuente);
 		panelCopiar.add(comboFuente);
 		panelCopiar.add(etiquetaPresentacion);
-		panelCopiar.add(rbtnTabla);
-		panelCopiar.add(rbtnTexto);
+		panelCopiar.add(checkBoxIncluirTamano);
+		panelCopiar.add(checkBoxIncluirCarpeta);
 
 		panelSalir.add(botonPortapapeles);
 		panelSalir.add(botonSalir);
@@ -580,9 +573,9 @@ public class TablaHuellasAction extends DataProcessAction {
 					comboFuente.getSelectedItem().toString())
 					+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_TITULO)
 							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TITULO_CONTENIDO),
-									"Ficheros adjuntos")
+									Propiedades.getString(Propiedades.PROP_TABLA_TITULO))
 							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TITULO_HUELLA_FORMATO),
-									"Formato huella: SHA-512 - Hexadecimal");
+									Propiedades.getString(Propiedades.PROP_FORMATO_HUELLA));
 
 			int sizeDocumentosModeloSoloFicheros = documentosModeloSoloFicheros.getSize();
 
@@ -590,9 +583,16 @@ public class TablaHuellasAction extends DataProcessAction {
 
 				Path path = Paths.get(documentosModeloSoloFicheros.getElementAt(i).toString());
 
+				// Excluir ficheros de hash
 				if (path.getFileName().toString().endsWith(Propiedades.HUELLA_FORMATOS[0][1])
 						|| path.getFileName().toString().endsWith(Propiedades.HUELLA_FORMATOS[1][1])
 						|| path.getFileName().toString().endsWith(Propiedades.HUELLA_FORMATOS[2][1])) {
+					continue;
+				}
+
+				// Solamente ficheros PDF
+				if (this.checkBoxSoloPdf.isSelected() && !path.getFileName().toString()
+						.endsWith(Propiedades.getString(Propiedades.PROP_EXTENSION_PDF))) {
 					continue;
 				}
 
@@ -602,6 +602,8 @@ public class TablaHuellasAction extends DataProcessAction {
 				long bytes = Files.size(path);
 				String bytesFormat = String.format("%,d bytes", bytes);
 
+				String carpeta = path.getParent().toString().split(":")[1];
+
 				byte[] data = AOUtil.getDataFromInputStream(inputStream);
 				byte[] hash = MessageDigest.getInstance(comboAlgoritmo.getSelectedItem().toString()).digest(data);
 
@@ -609,7 +611,7 @@ public class TablaHuellasAction extends DataProcessAction {
 
 				if (comboFormato.getSelectedItem().toString().equals(Propiedades.HUELLA_FORMATOS[0][0])) {
 					// 0 -> Hexadecimal
-					valorHuella = AOUtil.hexify(hash, false);
+					valorHuella = AOUtil.hexify(hash, false) + "h";
 				} else if (comboFormato.getSelectedItem().toString().equals(Propiedades.HUELLA_FORMATOS[1][0])) {
 					// 1 -> Base64
 					valorHuella = Base64.encode(hash);
@@ -617,20 +619,31 @@ public class TablaHuellasAction extends DataProcessAction {
 					valorHuella = "No definido";
 				}
 
-				rtfText = rtfText
-						+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_FICHERO)
-								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_FICHERO_TITULO), "Fichero:")
-								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_FICHERO_CONTENIDO),
-										stringToRtf(path.getFileName().toString()))
-						+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_TAMANO)
-								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TAMANO_TITULO),
-										stringToRtf("Tamaño:"))
-								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TAMANO_CONTENIDO),
-										bytesFormat)
-						+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_HUELLA)
-								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_HUELLA_TITULO), "Huella:")
-								.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_HUELLA_CONTENIDO),
-										valorHuella);
+				rtfText = rtfText + Propiedades.getString(Propiedades.PROP_RTF_TABLA_FICHERO)
+						.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_FICHERO_TITULO),
+								Propiedades.getString(Propiedades.PROP_TABLA_FICHERO))
+						.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_FICHERO_CONTENIDO),
+								stringToRtf(path.getFileName().toString()));
+
+				if (this.checkBoxIncluirCarpeta.isSelected()) {
+					rtfText = rtfText + Propiedades.getString(Propiedades.PROP_RTF_TABLA_CARPETA)
+							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_CARPETA_TITULO),
+									stringToRtf(Propiedades.getString(Propiedades.PROP_TABLA_CARPETA)))
+							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_CARPETA_CONTENIDO),
+									stringToRtf(carpeta));
+				}
+
+				if (this.checkBoxIncluirTamano.isSelected()) {
+					rtfText = rtfText + Propiedades.getString(Propiedades.PROP_RTF_TABLA_TAMANO)
+							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TAMANO_TITULO),
+									stringToRtf(Propiedades.getString(Propiedades.PROP_TABLA_TAMANO)))
+							.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TAMANO_CONTENIDO), bytesFormat);
+				}
+
+				rtfText = rtfText + Propiedades.getString(Propiedades.PROP_RTF_TABLA_HUELLA)
+						.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_HUELLA_TITULO),
+								Propiedades.getString(Propiedades.PROP_TABLA_HUELLA))
+						.replace(Propiedades.getString(Propiedades.PROP_RTF_CAMPO_HUELLA_CONTENIDO), valorHuella);
 
 				if (checkBoxCrearHexhash.isSelected()) {
 					crearHexhash(
@@ -645,14 +658,13 @@ public class TablaHuellasAction extends DataProcessAction {
 			rtfText = rtfText
 					+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_TITULO_HUELLA_FORMATO).replace(
 							Propiedades.getString(Propiedades.PROP_RTF_CAMPO_TITULO_HUELLA_FORMATO),
-							"Formato huella: " + comboAlgoritmo.getSelectedItem().toString() + " - "
+							Propiedades.getString(Propiedades.PROP_FORMATO_HUELLA) + comboAlgoritmo.getSelectedItem().toString() + " - "
 									+ comboFormato.getSelectedItem().toString())
 					+ Propiedades.getString(Propiedades.PROP_RTF_TABLA_FOOTER);
 
 			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 			Transferable htmlTransferable = new RtfInputStreamTransferable(rtfText);
 			clipboard.setContents(htmlTransferable, null);
-			System.out.println("Datos Html en Clipboard");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -661,43 +673,15 @@ public class TablaHuellasAction extends DataProcessAction {
 
 	}
 
-	public void copiarTablaTxt() {
-
-		try {
-			File fichero = new File(seleccionarDocumento.getText());
-			FileInputStream inputStream = new FileInputStream(new File(fichero.getAbsolutePath()));
-
-			byte[] data = AOUtil.getDataFromInputStream(inputStream);
-			byte[] hash = MessageDigest.getInstance("SHA-512").digest(data);
-
-			String txt = "HUELLA DIGITAL:" + "\n" + "Fichero: " + fichero.getName() + "\n" + "Huella Hex: "
-					+ AOUtil.hexify(hash, false) + "\n" + "Huella Base64: " + Base64.encode(hash) + "\n";
-
-			Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
-			StringSelection txtClipboard = new StringSelection(txt);
-			clipboard.setContents(txtClipboard, null);
-			System.out.println("Datos Txt en Clipboard");
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-	}
-
-	private SwingWorker<Void, Void> extraerDocumentosXML(boolean html) {
+	private SwingWorker<Void, Void> crearTablaRtf() {
 
 		final SwingWorker<Void, Void> validationWorker = new SwingWorker<Void, Void>() {
 			@Override
 			protected Void doInBackground() throws Exception {
 
 				// Buscar todos los documentos que deben ser añadidos en la tabla
+				copiarTablaHtml();
 
-				if (html) {
-					copiarTablaHtml();
-				} else {
-					copiarTablaTxt();
-				}
 				return null;
 			}
 

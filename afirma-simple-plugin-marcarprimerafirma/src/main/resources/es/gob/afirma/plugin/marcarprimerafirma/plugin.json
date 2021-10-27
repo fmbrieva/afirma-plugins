@@ -1,0 +1,23 @@
+{
+	"info": {
+		"name": "marcarprimerafirma",
+		"title": "MarcarPrimeraFirma",
+		"version_code": 1,
+		"version": "00.01Beta02",
+		"authors": [
+			"Felipe Muñoz Brieva"
+		],
+		"description": "Plugin para añadir una marca de agua al realizar la primera firma en el documento<br><br>Mediante el botón <b>Configurar</b> puede acceder al manual de ayuda.<br><br><hr><br>EL PLUGIN SE PROVEE EN SU ESTADO ACTUAL Y SIN GARANTÍAS DE NINGÚN TIPO. NO SE OFRECE DE MANERA EXPLÍCITA, IMPLÍCITA, NI JURADA GARANTÍAS, AFIRMACIONES NI DECLARACIONES DE NINGÚN TIPO CON RESPECTO AL MISMO<br><br> POR CONSIGUIENTE, USTED RECONOCE Y ACEPTA QUE EL PERSONAL QUE HA PARTICIPADO EN SU DESARROLLO NO TENDRÁ RESPONSABILIDAD ALGUNA QUE SURJA DEL USO O SE RELACIONE CON DICHO USO. SU ÚNICO DERECHO O RECURSO LEGAL ANTE CUALQUIER PROBLEMA O DISCONFORMIDAD CON EL PLUGIN ES DEJAR DE USARLO DE INMEDIATO.",
+		"configuration_panel": "es.gob.afirma.plugin.marcarprimerafirma.MarcarPrimeraFirmaConfiguracionPanel"
+	},
+	"buttons": [ 
+		{
+			"title": "Marcar Primera Firma",
+			"icon": "es/gob/afirma/plugin/marcarprimerafirma/certificate_16.png",
+			"tooltip": "Elaborar marcarprimerafirma",
+			"accesible_description": "Elaborar marcarprimerafirma",
+			"window": "input",
+			"action": "es.gob.afirma.plugin.marcarprimerafirma.MarcarPrimeraFirmaAction"
+		}
+	]
+}

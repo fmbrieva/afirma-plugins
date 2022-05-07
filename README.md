@@ -8,6 +8,8 @@ AutoFirma es una herramienta de escritorio con interfaz gráfica que permite la 
 | --- | --- | --- |
 | [**`InternallyDetachedView`**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedView/00.02/Plugin_InternallyDetachedView_v00r02.pdf?raw=yes)| [**00.02**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedView/00.02/afirma-ui-simpleafirma-plugin-internallydetachedview-v00r02.jar?raw=yes)| Visualizar documentos originales almacenados en archivos de firma XML |
 | [**`InternallyDetachedFolder`**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedFolder/00.01/Plugin_InternallyDetachedFolder_v00r01.pdf?raw=yes)| [**00.01**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedFolder/00.01/afirma-ui-simpleafirma-plugin-internallydetachedfolder-v00r01.jar?raw=yes)| Extraer documentos originales almacenados en archivos de firma XML |
+| [**`MarcarPrimeraFirma`**](https://github.com/digitaliza-aapp/afirma-plugins/blob/master/plugins/InternallyDetachedFolder/00.01/Plugin_InternallyDetachedFolder_v00r01.pdf?raw=yes)| [**00.01Beta02**](https://github.com/fmbrieva/afirma-plugins/blob/master/plugins/MarcarPrimeraFirma/00.01Beta02/afirma-ui-simpleafirma-plugin-marcarprimerafirma_v00r01Beta02.jar?raw=yes)| Añadir marca de agua en la primera firma (Firma masiva) |
+
 
 ### 1. Plugin InternallyDetachedView
 
